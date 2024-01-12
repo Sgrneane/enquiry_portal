@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-tb)x!8%3gjmi8p-1o68^vu216l*0acz7m^jb%=&m2mj+@#yzf#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.76','127.0.0.1','complaint.dftqc.com.np','www.complaint.dftqc.com.np','']
+ALLOWED_HOSTS = ['192.168.1.76','127.0.0.1','enquiry.spsenquiry.com.np','www.enquiry.spsenquiry.com.np',]
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'social_django',
     'rest_framework',
+    'corsheaders'
     'django_celery_results',
 ]
 
@@ -54,7 +55,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
+CSRF_ORIGIN_ALLOW_ALL=True
 
 ROOT_URLCONF = 'FQC.urls'
 
@@ -200,3 +203,6 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kathmandu'
 CELERY_RESULT_BACKEND = 'django-db'
+
+CSRF_TRUSTED_ORIGINS=['http://enquiry.spsenquiry.gov.np']
+USE_X_FORWARDED_HOST=True

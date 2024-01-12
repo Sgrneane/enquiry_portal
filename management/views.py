@@ -13,7 +13,6 @@ from django.template.loader import render_to_string
 from account.decorators import authentication_not_required,is_admin,is_superadmin,is_user, is_employee
 from django.contrib.auth.decorators import login_required
 from .tasks import send_notification_mail
-from FQC import renderers
 from .choices import purpose
 
 # Create your views here.
@@ -422,6 +421,3 @@ def send_mail_celery(request):
         send_notification_mail.delay(to_mail,html_content)
     finally:
         return HttpResponse('We have sent you a confirmation mail!')
-
-def pdf_view(request):
-    return renderers.render_to_pdf('management/print.html')
