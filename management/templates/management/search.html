@@ -1,0 +1,158 @@
+{% extends 'footer.html' %}
+{% block content%}
+{% load static %}
+{% include 'header.html' %}
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-8">
+        <div id="tab-content-container">
+          <div class="p-0">
+            <div class="row">
+              <div class="main-section-title">
+                <a href="" class="section-title">गुनाशो टोकन नं. <strong style="color: #0f52b6;">{{ complain.ticket_no }}</strong>  सम्बन्धि जानकारी</a>
+              </div>
+              <hr class="main-section-hr">
+              <div class="tab-content mt-3" id="myTabContent">
+                <div class="row">
+                  <table class="table table-bordered">
+                    <tr>
+                      <td style="width: 25%;"><strong>उजुरीको शिर्षक</strong></td>
+                      <td>{{ complain.complain_title }}</td>
+                    </tr>
+
+                    <tr>
+                      <td style="width: 25%;"><strong>उजुरीको टोकन नं.</strong></td>
+                      <td style="text-transform:uppercase">{{ complain.ticket_no }}</td>
+                    </tr>
+                    
+                    <tr>
+                      <td style="width: 25%;"><strong>उजुरीको वर्ग</strong></td>
+                      <td>{{ complain.broad_category }}</td>
+                    </tr>
+
+                    <tr>
+                      <td style="width: 25%;"><strong>उजुरीको ठेगाना</strong></td>
+                      <td>{{ complain.municipality.name }}-{{ complain.ward_no }}, {{complain.district.name }}, {{ complain.province.name }}</td>
+                    </tr>
+
+                    <tr>
+                      <td style="width: 25%;"><strong>उजुरीको गम्भीरता</strong></td>
+                      <td>{{ complain.get_priority }}</td>
+                    </tr>
+
+                    <tr>
+                      <td style="width: 25%;"><strong>उजुरीको विवरण</strong></td>
+                      <td>{{ complain.complain_description }}</td>
+                    </tr>
+
+                    <tr>
+                      <td style="width: 25%;"><strong>उजुरी सम्बन्धि कागजात</strong></td>
+                      <td>{% if complain.complain_image %}
+                        <a href="{{ complain.complain_image.url }}">हेर्नुहोस्</a> 
+                        {% else %}
+                        उपलब्ध छैन
+                        {% endif %}
+                    </td>
+                    </tr>
+
+                    <tr>
+                      <td style="width: 25%;"><strong>उजुरीको अवस्था</strong></td>
+                      <td><p class="{{ complain.get_status }}">{{ complain.get_status }}</p></td>
+                    </tr>
+                    {% if complain.response.exists %}
+                    <tr>
+                      <td style="width: 25%;"><strong>उजुरीको सम्बोधन</strong></td>
+                      <td>{% for response in complain.response.all %} {{ response.response_description }}{% endfor %}</td>
+                    </tr>
+                    {% endif %}
+
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+        <div class="sidebar-sticky-top">
+          <div id="tab-content-container" class="register-search">
+            <a href="" class="btn btn-primary w-100 border-0 text-start">
+              <div class="icon-box me-3">
+                <span class="material-symbols-outlined">add_comment</span>
+              </div>
+              <span>
+                <strong>Register Complain</strong> <br>( गुनाशो दर्ता गर्नुहोस )</span>
+            </a>
+            <a href="" class="btn btn-primary w-100 border-0 text-start" data-bs-toggle="modal"
+              data-bs-target="#searchBox">
+              <div class="icon-box me-3">
+                <span class="material-symbols-outlined">quick_reference_all</span>
+              </div>
+              <span>
+                <strong>Search Complain</strong> <br>( गुनाशो खोजी गर्नुहोस )</span>
+            </a>
+            <a href="" class="btn btn-primary w-100 border-0 text-start mb-0">
+              <div class="icon-box me-3">
+                <span class="material-symbols-outlined">live_help</span>
+              </div>
+              <span>
+                <strong>Complain Related Information</strong> <br>( गुनाशो सम्बन्धि जानकारी )</span>
+            </a>
+          </div>
+          <div id="tab-content-container" class="mt-4">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61552001069889&tabs=timeline&width=376&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+              width="376" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container-fluid public-nav mt-3">
+    <div class="container h-100">
+      <nav class="navbar navbar-expand-lg h-100" style="box-shadow: none;">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown" style="height: 60px;">
+            <ul class="navbar-nav h-100"
+              style="width: 100%!important; justify-content: center; align-items: center;">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="https://dftqc.gov.np/">© २०२२ खाद्य प्रविधि र गुण नियन्त्रण विभाग</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
+<div class="modal fade" id="searchBox" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="searchBoxLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered confirmation-modal">
+    <div class="modal-content">
+    <form method="post" action="{% url 'management:search_complain' %}">
+      {% csrf_token %}
+      <div class="modal-body delete-body text-start p-5">
+        <label for="" class="form-label mb-1 data cm">Complain Token Number( टोकन नं. )</label>
+        <input type="text" class="form-control cm" placeholder="Eg. DFTQC-CX-XXXX" name="search">
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <div class="row d-flex">
+          <div class="col-md-12 d-flex justify-content-center">
+            <button type="button" class="btn btn-primary cancel" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary ms-3">Search</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

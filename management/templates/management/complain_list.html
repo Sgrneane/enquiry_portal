@@ -1,0 +1,291 @@
+{% extends 'layout.html' %}
+{% block content %}
+            <div class="col-md-9 my-profile-w-85">
+                <section id="tab-content-container">
+                    <div class="p-0">
+                        <div class="row">
+                            <div class="main-section-title">
+                                <a href="" class="section-title">Enquiries</a>
+                                <ul class="nav nav-tabs" id="pradesh-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="allComplain-tab" data-bs-toggle="tab" data-bs-target="#allComplains"
+                                            type="button" role="tab" aria-controls="allComplains" aria-selected="true">All</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pendingComplain-tab" data-bs-toggle="tab" data-bs-target="#pendingComplains"
+                                            type="button" role="tab" aria-controls="pendingComplains" aria-selected="false">Pending</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="processingComplain-tab" data-bs-toggle="tab" data-bs-target="#processingComplains"
+                                            type="button" role="tab" aria-controls="processingComplains" aria-selected="false">Processing</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="respondedComplain-tab" data-bs-toggle="tab" data-bs-target="#respondedComplains"
+                                            type="button" role="tab" aria-controls="respondedComplain" aria-selected="false">Responded</button>
+                                    </li>    
+                                </ul>
+                            </div>
+                            <hr class="main-section-hr">
+
+                            <div class="tab-content mt-4" id="myTabContent">
+                                <div class="tab-pane fade show active" id="allComplains" role="tabpanel" aria-labelledby="allComplain-tab"
+                                    tabindex="0">
+                                    
+                                    <table id="allComplain" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>S. No.</th>
+                                                <th>Ticket No.</th>
+                                                <th>Enquiry Title</th>
+                                                <th>Category</th>
+                                                <th>Enquiry By</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for complain in complains %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ complain.ticket_no }}</td>
+                                                <td>{{ complain.complain_title }}</td>
+                                                <td>{{ complain.complain_category }}</td>
+                                                
+                                                 <td>{% if complain.created_by %}{{ complain.created_by.first_name }} {{ complain.created_by.last_name }}
+                                                    {% else %}{{ complain.is_anonymous.first_name }} {{ complain.is_anonymous.last_name }}
+                                                    {% endif %}
+                                                 </td>
+                                                <td>
+                                                    <div class="{{ complain.get_status }}">{{ complain.get_status }}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex kit-action-com">
+                                                        <div class="d-flex kit-action-com">
+                                                            <div class="action-btn-view">
+                                                                <a href="{% url 'management:view_complain' id=complain.id %}">
+                                                                    <span class="material-symbols-outlined">visibility</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        {% if request.user.role == 1 or request.user.role == 2 %}
+                                                        <div class="d-flex kit-action-com">
+                                                            <div class="action-btn-view">
+                                                                <a href="">
+                                                                    <span class="material-symbols-outlined">print</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="tab-pane fade" id="pendingComplains" role="tabpanel" aria-labelledby="pendingComplain-tab"
+                                    tabindex="0">
+                                    <table id="pendingComplain" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>S. No.</th>
+                                                <th>Ticket No.</th>
+                                                <th>Enquiry Title</th>
+                                                <th>Category</th>
+                                                <th>Enquiry By</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for pending_complain in pending_complains %}
+                                            <tr>
+                                                <td>{{ pending_complain.id }}</td>
+                                                <td>{{ pending_complain.ticket_number }}</td>
+                                                <td>{{ pending_complain.complain_title }}</td>
+                                                <td>{{ pending_complain.complain_category }}</td>
+                                                <td>{% if pending_complain.created_by %}{{ pending_complain.created_by.first_name }} {{ pending_complain.created_by.last_name }}
+                                                    {% else %}{{ pending_complain.is_anonymous.first_name }} {{ pending_complain.is_anonymous.last_name }}
+                                                    {% endif %}
+                                                 </td>
+                                                <td>
+                                                    <div class="{{ pending_complain.get_status }}">{{ pending_complain.get_status }}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex kit-action-com">
+                                                        <div class="d-flex kit-action-com">
+                                                            <div class="action-btn-view">
+                                                                <a href="{% url 'management:view_complain' id=pending_complain.id %}">
+                                                                    <span class="material-symbols-outlined">visibility</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="d-flex kit-action-com">
+                                                            <div class="action-btn-view">
+                                                                <a href="">
+                                                                    <span class="material-symbols-outlined">print</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="tab-pane fade" id="processingComplains" role="tabpanel" aria-labelledby="processingComplain-tab"
+                                    tabindex="0">
+                                    <table id="processingComplain" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>S. No.</th>
+                                                <th>Ticket No.</th>
+                                                <th>Enquiry Title</th>
+                                                <th>Category</th>
+                                                <th>Enquiry By</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for processing_complain in processing_complains %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ processing_complain.ticket_no }}</td>
+                                                <td>{{ processing_complains.complain_title }}</td>
+                                                <td>{{processing_complain.complain_category }}</td>
+                                                <td>{% if processing_complain.created_by %}{{ processing_complain.created_by.first_name }} {{ processing_complain.created_by.last_name }}
+                                                    {% else %}{{ processing_complain.is_anonymous.first_name }} {{ processing_complain.is_anonymous.last_name }}
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                                <td>
+                                                    <div class="{{ processing_complain.get_status }}">{{ processing_complain.get_status }}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex kit-action-com">
+                                                        <div class="d-flex kit-action-com">
+                                                            <div class="action-btn-view">
+                                                                <a href="{% url 'management:view_complain' id=processing_complain.id %}">
+                                                                    <span class="material-symbols-outlined">visibility</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="d-flex kit-action-com">
+                                                            <div class="action-btn-view">
+                                                                <a href="">
+                                                                    <span class="material-symbols-outlined">print</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="tab-pane fade" id="respondedComplains" role="tabpanel" aria-labelledby="respondedComplain-tab"
+                                    tabindex="0">
+                                    <table id="respondedComplain" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>S. No.</th>
+                                                <th>Ticket No.</th>
+                                                <th>Complain Title</th>
+                                                <th>Category</th>
+                                                <th>Complain By</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for responded_complain in responded_complains %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ responded_complain.ticket_no }}</td>
+                                                <td>{{ responded_complain.complain_title }}</td>
+                                                <td>{{ responded_complain.complain_category }}</td>
+                                                <td>{% if responded_complain.created_by %}{{ responded_complain.created_by.first_name }} {{ responded_complain.created_by.last_name }}
+                                                    {% else %}{{ responded_complain.is_anonymous.first_name }} {{ responded_complain.is_anonymous.last_name }}
+                                                    {% endif %}
+
+                                                </td>
+                                                <td>
+                                                    <div class="{{ responded_complain.get_status }}">Responded</div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex kit-action-com">
+                                                        <div class="d-flex kit-action-com">
+                                                            <div class="action-btn-view">
+                                                                <a href="{% url 'management:view_complain' id=responded_complain.id %}">
+                                                                    <span class="material-symbols-outlined">visibility</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="d-flex kit-action-com">
+                                                            <div class="action-btn-view">
+                                                                <a href="">
+                                                                    <span class="material-symbols-outlined">print</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+                    </div>
+                </section>
+            </div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+<script>
+    $('#allComplain').dataTable( {
+        dom: 'fBrtpl',
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, 'All']
+        ],
+    });
+    $('#pendingComplain').dataTable( {
+        dom: 'fBrtpl',
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, 'All']
+        ],
+    });
+    $('#processingComplain').dataTable( {
+        dom: 'fBrtpl',
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, 'All']
+        ],
+    });
+    $('#respondedComplain').dataTable( {
+        dom: 'fBrtpl',
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, 'All']
+        ],
+    });
+</script>
+{% endblock %}

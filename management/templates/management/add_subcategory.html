@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+            <div class="col-md-9 my-profile-w-85">
+
+                <section id="tab-content-container">
+                    <div class="p-0">
+                        <div class="row">
+                            <div class="main-section-title">
+                                <a href="" class="section-title"> Sub Categories > <span style="color: #7a7a7a; font-size: 18px;"><small>Sub-category > Create</small></span></a>
+                            </div>
+                            <hr class="main-section-hr">
+
+                            <div class="tab-content mt-4" id="myTabContent">
+                                {% if sub_category.id %}
+                                <form action="{% url 'management:edit_sub_category' id=sub_category.id %}" method="post">
+                                    {% else %}
+                                <form action="{% url 'management:create_sub_category'%}" method="post">
+                                    {% endif %}
+                                    {% csrf_token %}
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label cm">Sub-category name in english</label>
+                                            <input type="text" class="form-control cm"{% if sub_category.id %} value="{{ sub_category.english_name }}"{% endif %}
+                                                placeholder="Enter category name in english" name="english_name">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label cm">Sub-category name in nepali</label>
+                                            <input type="text" class="form-control cm"{% if sub_category.id %} value="{{ sub_category.nepali_name }}"{% endif %}
+                                                placeholder="Enter category name in nepali" name="nepali_name">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 text-end">
+                                            <button type="submit" class="btn btn-primary w-25">
+                                                {% if sub_category.id %}Update{% else %}Create{% endif %}</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+
+                        
+                    </div>
+                </section>
+
+            </div>
+ {% endblock %}

@@ -1,0 +1,90 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DFTQC | Grievance Handling System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"
+    integrity="sha512-nNlU0WK2QfKsuEmdcTwkeh+lhGs6uyOxuUs+n+0oXSYDok5qy0EI0lt01ZynHq6+p/tbgpZ7P+yUb+r71wqdXg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+  <div class="navbar navbar-expand-lg bg-body-tertiary" style="box-shadow: none;">
+    <div class="container d-flex justify-space-between">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'images/nepal-government.png' %}" alt="Logo" class="d-inline-block align-text-top" style="width: 100px;">
+      </a>
+      <div class="navbar-brand text-center">
+        <div>
+          <p class="mb-0">Government of Nepal <br>
+            Ministry of Agriculture and Livestock Development
+          </p>
+          <p class="mb-0 dftqc">Department of Food Technology and Quality Control <br> <span>SPS Enquiry Sewa Portal</span>
+          </p>
+        </div>
+      </div>
+      <div class="db-user-profile">
+        <img src="{% static 'images/nepalflag.gif'%}" alt=""
+          style="border-radius: 0; height: 80px;">
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid public-nav sticky-top">
+    <div class="container h-100">
+      <nav class="navbar navbar-expand-lg h-100" style="box-shadow: none;">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown" style="height: 60px;">
+            <ul class="navbar-nav h-100"
+              style="width: 50%!important; justify-content: space-between; align-items: center;">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'management:index' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'management:index_categories' %}">Enquiry Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#navsearchBox">Search Enquiry</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Manual</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'management:index_faq'%}">FAQs</a>
+              </li>
+            </ul>
+            <div class="auth-btn ms-auto">
+              <ul class="navbar-nav align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="{% url 'account:login'%}">Login</a>
+                </li>
+                <li class="nav-item ms-2">
+                  <a class="nav-link register-btn" href="{% url 'account:signup'%}">Register</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>

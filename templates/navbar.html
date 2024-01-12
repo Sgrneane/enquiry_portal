@@ -1,0 +1,45 @@
+<div class="col-md-3 my-profile-w-15">
+    <div class="sticky-content">
+        <div class="profile-nav">
+            <div class="profile-navigation">
+                <ul>
+                    <li class="active"><a href="{% url 'management:user_dashboard' %}"><span class="material-symbols-rounded me-2">
+                        grid_view
+                        </span>Dashboard</a></li>
+                        {% if request.user.role == 3%}
+                    <li><a href="{% url 'management:create_complain' %}"><span class="material-symbols-rounded me-2">
+                        add_comment
+                        </span>Register Enquiry</a></li>
+                        {% endif %}
+                        {% if request.user.role == 1%}
+                        <li><a href="{% url 'management:anonymous_complain' %}"><span class="material-symbols-rounded me-2">
+                            add_comment
+                            </span>Register Enquiry</a></li>
+                            {% endif %}
+                    <li><a href="{% url 'management:all_complains'%}"><span class="material-symbols-rounded me-2">
+                        other_admission
+                        </span>Enquiries</a></li>
+                    <li><a href="{% url 'management:category_list'%}"><span class="material-symbols-rounded me-2">
+                            category
+                        </span>Categories</a></li>
+                        {% if request.user.role == 1%}
+                    <li><a href="{% url 'account:all_user' %}"><span class="material-symbols-rounded me-2">
+                        group
+                        </span>Users</a></li>
+                        {% endif %}
+                        {% if request.user.role == 1%}
+                        <li><a href="{% url 'management:all_faqs' %}"><span class="material-symbols-rounded me-2">
+                            group
+                            </span>FAQs</a></li>
+                            {% endif %}
+                    <li><a href="{% url 'account:change_password' %}"><span class="material-symbols-rounded me-2">
+                        lock_reset
+                        </span>Change Password</a></li>
+                    <li><a href="{% url 'account:logout_user'%}"><span class="material-symbols-rounded me-2">
+                        logout
+                        </span>Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

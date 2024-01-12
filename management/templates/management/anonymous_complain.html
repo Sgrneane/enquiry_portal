@@ -1,0 +1,179 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="col-md-9 mt-4">
+    <div class="row">
+        <div id="tab-content-container">
+          <div class="p-0">
+            <div class="row">
+              <div class="main-section-title">
+                <a href="" class="section-title">गुनासो दर्ता सम्बन्धि जानकारी</a>
+              </div>
+              <hr class="main-section-hr">
+              <div class="tab-content mt-3" id="myTabContent">
+                <div class="row">
+                  <p class="label">
+                    कृषि वस्तुको स्वच्छता सम्बन्धी सम्झौताको पारदर्शिता प्रावधान अन्तर्गत नेपालमा एस.पि.एस नेशनल
+                    ईन्क्वायरी प्वाईन्ट स्थापना सन् २००४ जनवरी १ मा कृषि विकास मन्त्रालय अन्तर्गतको खाद्य प्रविधी तथा
+                    गुण नियन्त्रण विभागमा भएको हो । एस.पि.एस सम्बन्धी प्रावधानहरुका बारेमा नेशनल ईन्क्वायरी प्वाईन्टले
+                    जानकारी उपलब्ध गराउने क्रममा तपसिलका कार्यहरु गर्दछ ।
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-content-container" class="mt-3">
+              <div class="main-section-title">
+                
+                <a href="" class="section-title">गुनासोको विवरण</a>
+              </div>
+              <hr class="main-section-hr">
+          <form action="{% url 'management:anonymous_complain'%}" method="post" class="mt-5" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="complain-detail-container">
+              <div class="complain-details-title">Personal Details ( व्यक्तिगत विवरण )</div>
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <p class="label">First Name ( नाम )</p>
+                        <input type="text" class="form-control cm" placeholder="Enter first name" name="first_name">
+                    </div>
+                    <div class="col-md-3">
+                        <p class="label">Last Name ( थर )</p>
+                        <input type="text" class="form-control cm" placeholder="Enter last name" name="last_name">
+                    </div>
+                    <div class="col-md-3">
+                        <p class="label">Phone No. ( फोन नं.)</p>
+                        <input type="text" class="form-control cm" placeholder="Enter phone number" name="phone_number">
+                    </div>
+                    <div class="col-md-3">
+                        <p class="label">Personal Address ( व्यक्तिगत ठेगाना )</p>
+                        <input type="text" class="form-control cm" placeholder="Enter personal address" name="person_address">
+                    </div>
+                </div>
+            </div>
+
+            <div class="complain-detail-container mt-5">
+              <div class="complain-details-title">Enquiry Details ( सोधपुछ विवरण )</div>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <p class="label">Enquiry Title ( सोधपुछ शिर्षक )</p>
+                            <input type="text" class="form-control cm" placeholder="Enter enquiry title" name="complain_title">
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-md-12">
+                          <p class="label">Enquiry Address ( सोधपुछ ठेगणा )</p>
+                          <input type="text" class="form-control cm" placeholder="Enter enquiry Address" name="enquiry_address">
+                      </div>
+                  </div>
+
+                    <div class="row mt-4">
+                      <div class="col-md-4">
+                          <p class="label">Enquiry Category ( सोधपुछ वर्ग )</p>
+                          <select id="category" class="form-select kit-form-control" name="complain_category">
+                            <option value="" disabled selected>Select enquiry category</option>
+                            {% for c in complain_category %}
+                            <option value="{{c.id}}">{{ c.english_name }}</option>
+                            {% endfor %}
+                                
+                          </select> 
+                      </div>
+
+                      <div class="col-md-4">
+                        <p class="label">Enquiry Purpose ( सोधपुछ उद्देश्य )</p>
+                        <select id="category" class="form-select kit-form-control" name="purpose">
+                          <option value="" disabled selected>Select enquiry purpose</option>
+                          {% for k,p in complain_purpose %}
+                          <option value="{{k}}">{{p}}</option>
+                          {% endfor %}
+                        </select> 
+                      </div>
+                      
+                    </div>
+
+                    <div class="row mt-4">
+                      <p class="data mb-2">Complain Description ( सोधपुछ विवरण )</p>
+                        <div class="col-md-12">
+                          <p class="label">Description ( विवरण )</p>
+                          <textarea name="complain_description" class="form-control" rows="5"></textarea> 
+                        </div>
+                        <div class="col-md-12 mt-3">
+                          <p class="label">Images or Files (if any) ( तस्वीर तथा डकुमेन्ट, यदि भएमा )</p>
+                          <input type="file" class="form-control cm" name="complain_image">
+                        </div>
+                    </div>
+              </div>
+
+              <div class="col-md-12 text-end mt-3">
+                <button type="submit" class="btn btn-primary">Submit Complain</button>
+              </div>
+
+            </div>
+
+            
+        </form>
+
+    </div>
+  </div>
+
+
+  <div class="container-fluid public-nav mt-3">
+    <div class="container h-100">
+      <nav class="navbar navbar-expand-lg h-100" style="box-shadow: none;">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown" style="height: 60px;">
+            <ul class="navbar-nav h-100"
+              style="width: 100%!important; justify-content: center; align-items: center;">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="https://dftqc.gov.np/">© २०२२ खाद्य प्रविधि र गुण नियन्त्रण विभाग</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  {% endblock %}
+
+  {% block scripts %}
+  <script>
+            $(document).ready(function () {
+                $('#province').on('change', function () {
+                  var provinceId = $(this).val();
+                  $.ajax({
+                      url: `nepalmap/get-districts/${provinceId}/`,
+                      type: 'GET',
+                      success: function (data) {
+                          var districtSelect = $('#district');
+                          districtSelect.empty();
+                          districtSelect.prepend('<option value="" disabled selected>Select District</option>');
+                          $.each(data, function (index, district) {
+                              districtSelect.append('<option value="' + district.id + '">' + district.name + '</option>');
+                          });
+                      }
+                  });
+                })
+                $('#district').on('change', function () {
+                  var districtId = $(this).val();
+                  $.ajax({
+                      url: `nepalmap/get-district/get-municipalities/${districtId}/`,
+                      type: 'GET',
+                      success: function (data) {
+                          var municipalitySelect = $('#municipality');
+                          municipalitySelect.empty();
+                          municipalitySelect.prepend('<option value="" disabled selected>Select Municipality</option>');
+                          $.each(data, function (index, municipality) {
+                              municipalitySelect.append('<option value="' + municipality.id + '">' + municipality.name + '</option>');
+                          });
+                      }
+                  });
+                })
+            })
+        </script>
+        
+  {% endblock %}
+
+

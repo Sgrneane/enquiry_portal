@@ -1,0 +1,214 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+            <div class="col-md-9 my-profile-w-85">
+                <section id="tab-content-container">
+                    <div class="p-0">
+                        <div class="row">
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                {{ message|safe }}
+                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                             </div>
+                            {% endfor %}
+                            {% endif %}
+                            <div class="main-section-title">
+                                <a href="" class="section-title">Users</a>
+                                <ul class="nav nav-tabs" id="pradesh-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="adminUser-tab" data-bs-toggle="tab" data-bs-target="#adminUsers"
+                                            type="button" role="tab" aria-controls="adminUsers" aria-selected="true">Admin Users</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="generalUser-tab" data-bs-toggle="tab" data-bs-target="#generalUsers"
+                                            type="button" role="tab" aria-controls="generalUsers" aria-selected="false">General Users</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <hr class="main-section-hr">
+
+                            <div class="tab-content mt-4" id="myTabContent">
+                                <div class="tab-pane fade show active" id="adminUsers" role="tabpanel" aria-labelledby="adminUser-tab"
+                                    tabindex="0">
+
+                                    <div class="col-md-12 text-end">
+                                        <div class="add-heading">
+                                            <p>
+                                                <a href="{% url 'account:create_admin'%}">Create User</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <table id="adminUser" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>S. No.</th>
+                                                <th>Full Name</th>
+                                                <th>Address</th>
+                                                <th>Role</th>
+                                                <th>Created Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for admin_user in admin_users%}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td class="text-capitalize">{{ admin_user.first_name }} {{ admin_user.last_name }}</td>
+                                                <td>{{ admin_user.address }}</td>
+                                                <td>{{ admin_user.role_name }}</td>
+                                                <td>{{admin_user.created_date|date:"Y-m-d"}}</td>
+                                                <td>
+                                                    <div class="d-flex kit-action-com">
+                                                        <div class="d-flex kit-action-com">
+                                                            <div class="action-btn-view">
+                                                                <a href="{% url 'account:view_user' id=admin_user.id %}">
+                                                                    <span class="material-symbols-outlined">visibility</span>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="action-btn-view">
+                                                                <a href="{% url 'account:edit_user' id=admin_user.id %}">
+                                                                    <span class="material-symbols-outlined">edit</span>
+                                                                </a>
+                                                            </div>
+
+                                                            <form class="action-btn-dlt" action="{% url 'account:delete_user' id=admin_user.id%}" method="post">
+                                                                {% csrf_token %}
+                                                                <input type="hidden" name="_token" value="ZHhwvleWh9eZuuq4vvV8LPyq0oxoDJyqhsPcWQqK"> <input type="hidden" name="_method" value="delete">                            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop_483">
+                                                                    <i class="fa-regular fa-trash-can"></i>
+                                                                </button>
+                                    
+                                                                <div class="modal fade" id="staticBackdrop_483" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered confirmation-modal">
+                                                                        <div class="modal-content">
+                                                                    
+                                                                        <div class="modal-body delete-body">
+                                                                        <span class="material-symbols-outlined delete-icon">cancel</span>
+                                                                            <h3 class="mb-2">Are you sure ?</h3>
+                                                                            <p>Do you really want to delete this user ?<br>
+                                                                        </p></div>
+                                                                        <div class="modal-footer d-flex justify-content-center">
+                                                                        <div class="row d-flex">
+                                                                            <div class="col-md-12 d-flex justify-content-center">
+                                                                                <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
+                                                                                <button type="submit" class="btn btn-danger delete-btn">Delete</button>
+                                                                            </div>
+                                                                        </div>
+                                                                            
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="tab-pane fade" id="generalUsers" role="tabpanel" aria-labelledby="generalUser-tab"
+                                    tabindex="0">
+
+                                    <table id="generalUser" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>S. No.</th>
+                                                <th>Full Name</th>
+                                                <th>Address</th>
+                                                <th>Joined Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for user in users %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ user.first_name }} {{ user.last_name}}</td>
+                                                <td>{{ user.address }}</td>
+                                                <td>{{ user.created_date|date:"Y-m-d" }}</td>
+                                                <td>
+                                                    <div class="d-flex kit-action-com">
+                                                        <div class="d-flex kit-action-com">
+                                                            
+                                                            <div class="action-btn-view">
+                                                                <a href="{% url 'account:view_user' id=user.id %}">
+                                                                    <span class="material-symbols-outlined">visibility</span>
+                                                                </a>
+                                                            </div>
+
+                        
+
+                                                            <form class="action-btn-dlt" action="{% url 'account:delete_user' id=user.id %}" method="post">  
+                                                                {%csrf_token %}                          
+                                                                <button type="button" data-bs-toggle="modal"data-bs-target="#staticBackdrop">
+                                                                    <i class="fa-regular fa-trash-can"></i>
+                                                                </button>
+                                    
+                                                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered confirmation-modal">
+                                                                        <div class="modal-content">
+                                                                    
+                                                                        <div class="modal-body delete-body">
+                                                                        <span class="material-symbols-outlined delete-icon">cancel</span>
+                                                                            <h3 class="mb-2">Are you sure ?</h3>
+                                                                            <p>Do you really want to delete this user ?<br>
+                                                                        </p></div>
+                                                                        <div class="modal-footer d-flex justify-content-center">
+                                                                        <div class="row d-flex">
+                                                                            <div class="col-md-12 d-flex justify-content-center">
+                                                                                <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
+                                                                                <button type="submit" class="btn btn-danger delete-btn">Delete</button>
+                                                                            </div>
+                                                                        </div>
+                                                                            
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+                    </div>
+                </section>
+            </div>
+            {% endblock %}
+            {% block scripts %}
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script>
+        $('#adminUser').dataTable( {
+            dom: 'fBrtpl',
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, 'All']
+            ],
+        });
+        $('#generalUser').dataTable( {
+            dom: 'fBrtpl',
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, 'All']
+            ],
+        });
+    </script>
+ {% endblock %}

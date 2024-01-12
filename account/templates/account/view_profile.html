@@ -1,0 +1,59 @@
+
+{% extends 'layout.html'%}
+{% load static %}
+{% block content %}
+         <div class="col-md-9 my-profile-w-85">
+                <section id="tab-content-container">
+                    <div class="p-0">
+                        <div class="row">
+                            <div class="main-section-title">
+                                <a href="" class="section-title">User > <span style="color: #7a7a7a; font-size: 18px;"><small>Sanjay Bhandari > View</small></span></a>
+                            </div>
+                            <hr class="main-section-hr">
+
+                            <div class="tab-content mt-4" id="myTabContent">
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">Full Name( पुरा नाम )</label>
+                                            <p class="text-capitalize data">{{ user.first_name }} {{user.last_name}}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">Username( प्रयोगकर्ता नाम  )</label>
+                                            <p class="data">{{ user.username }}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">Role( रोल )</label>
+                                            <p class="data">{{ user.role_name }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">Phone Number( फोन नम्बर )</label>
+                                            <p class="data">+977-{{ user.phone_number}}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">Email Address( इमेल ठेगाना )</label>
+                                            <p class="data">{{ user.email }}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">
+                                                {% if user.role == 1 %}Created Date 
+                                                {% else %} 
+                                                Joined Date
+                                                {% endif %}
+                                            </label>
+
+                                            <p class="data">{{ user.created_date }}</p>
+                                        </div>
+                                    </div>
+                            </div>
+
+                        </div>
+
+
+                        
+                    </div>
+                </section>
+            </div>
+        {% endblock %}
+

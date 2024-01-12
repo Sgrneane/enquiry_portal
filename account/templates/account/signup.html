@@ -1,0 +1,107 @@
+{% load static %}
+{% include 'header.html' %}
+
+  <div class="container mt-4" style="height: calc(100vh - 271px);">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10">
+        <div id="tab-content-container">
+          <div class="p-0">
+            <div class="row">
+              <div class="main-section-title justify-content-center text-center flex-column">
+                <a href="" class="section-title">Register new account</a>
+                <p class="label">Please fill in the form below to register.</p>
+                {% if messages %}
+                {% for message in messages %}
+                <p class="label">{{ message}}</p>
+                {% endfor %}
+                {% endif %}
+              </div>
+              <hr class="main-section-hr">
+              <div class="tab-content mt-3 px-5" id="myTabContent">
+                <form action="{% url 'account:signup' %}" method='post'>
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-md-4">
+                      <p class="label p-0 mb-2">First Name ( नाम )</p>
+                      <input type="text" name="first_name" class="form-control cm" placeholder="Enter first name">
+                    </div>
+
+                    <div class="col-md-4">
+                      <p class="label p-0 mb-2">Last Name ( थर )</p>
+                      <input type="text" name="last_name" class="form-control cm" placeholder="Enter last name">
+                    </div>
+
+                    <div class="col-md-4">
+                      <p class="label p-0 mb-2">Username ( प्रयोगकर्ता नाम )</p>
+                      <input type="text" name="username" class="form-control cm" placeholder="Enter username">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-md-4">
+                      <p class="label p-0 mb-2">Email address ( इमेल ठेगाना )</p>
+                      <input type="email" name="email" class="form-control cm" placeholder="Enter email address">
+                    </div>
+
+                    <div class="col-md-4">
+                      <p class="label p-0 mb-2">Phone Number ( फोन नं. )</p>
+                      <input type="text" name="phone_number" class="form-control cm" placeholder="Enter phone number">
+                    </div>
+                       <div class="col-md-4">
+                      <p class="label p-0 mb-2">Nationality ( राष्ट्रियता )</p>
+                      <select id="category" class="form-select kit-form-control" name="nationality">
+                        <option value="" disabled selected>Select Nationality</option>
+                        {% for k, v in countries %}
+                            <option value="{{ k }}">{{ v }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                    <div class="col-md-4">
+                      <p class="label p-0 mb-2"> Full Address ( ठेगाना )</p>
+                      <input type="text" name="address" class="form-control cm" placeholder="Enter address">
+                    </div>
+                    <div class="col-md-4">
+                      <p class="label p-0 mb-2">Password ( पासवोर्ड )</p>
+                      <input type="password" name="password" class="form-control cm" placeholder="Enter your password">
+                    </div>
+                  </div>
+                  
+
+                  <div class="row mt-3">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                  </div>
+                </form>
+
+                <div class="row text-center mt-3">
+                  <p class="mb-1">Already have an account?</p>
+                  <a href={% url 'account:login' %}><button type="submit" class="btn btn-primary">Login</button></a>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid public-nav mt-3">
+    <div class="container h-100">
+      <nav class="navbar navbar-expand-lg h-100" style="box-shadow: none;">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown" style="height: 60px;">
+            <ul class="navbar-nav h-100"
+              style="width: 100%!important; justify-content: center; align-items: center;">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="https://dftqc.gov.np/">© २०२२ खाद्य प्रविधि र गुण नियन्त्रण विभाग</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
+
+{% include 'footer.html' %}

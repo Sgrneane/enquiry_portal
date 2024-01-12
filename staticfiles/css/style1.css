@@ -1,0 +1,1123 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --body-background: #f8faff;
+  --primary-color: #355fb3;
+  --secondary-color: #393940;
+  --body-bg-color: #f0f2f5;
+  --background-color: #4979f2;
+  --border-color: #d3d7db;
+  --white: #ffffff;
+  --black: #000000;
+  --grey: #707173;
+}
+
+body {
+  font-family: Poppins;
+  background-color: var(--body-bg-color);
+}
+.top-header {
+  background-color: white;
+}
+/* .main-body {
+  height: 150vh;
+  background-color: var(--body-bg-color);
+} */
+/* top-header-div section  */
+
+.top-header-div {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-header-div img {
+  height: 70px;
+}
+.top-header-div span {
+  color: var(--primary-color);
+  font-size: 25px;
+  background-color: var(--body-bg-color);
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.login-div {
+  background-color: var(--body-background);
+  padding: 5px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  display: flex;
+  gap: 5px;
+}
+.login-div:hover {
+  background-color: var(--primary-color);
+}
+.login-div:hover a {
+  color: var(--white);
+}
+
+.login-div .login {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* navigation section  */
+.nav-container {
+  margin-top: 10px;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+.toggle_btn {
+  display: none;
+}
+.navbar-nav {
+  display: flex;
+  gap: 30px;
+}
+.login_btn {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-color);
+  gap: 8px;
+  color: var(--white);
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--black);
+  font-weight: 400;
+}
+.nav-link span {
+  font-size: 22px;
+}
+/* .nav-link i {
+  font-size: 22px;
+  margin-right: 5px;
+} */
+
+/* main body info section  */
+
+.info-row {
+  padding: 80px 0px;
+}
+
+.front-card-title {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.54);
+  margin-left: 10px;
+  margin-bottom: 16px;
+}
+.hero-para-div {
+  text-align: center;
+  padding: 40px 40px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: 15px;
+  margin-bottom: 35px;
+}
+/* sample complain section  */
+.card-row {
+  margin-bottom: 20px;
+}
+.sample-card {
+  width: 90%;
+  border: 1px solid var(--primary-color);
+}
+.sample-card:hover {
+  background-color: var(--body-background);
+}
+.card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid gainsboro;
+}
+.complain-sample-body {
+  padding: 30px;
+}
+.complain-sample-title {
+  font-size: 22px;
+  color: #11192d;
+}
+
+.card-btn-anchor {
+  margin: 10px;
+}
+
+.card-title {
+  color: #11192d;
+}
+.complain-list-div {
+  display: flex;
+  justify-content: space-between;
+}
+.card-status-sec {
+  display: flex;
+  flex-direction: column;
+}
+.status-btn {
+  height: max-content;
+  background-color: var(--primary-color);
+}
+.card-token {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.card-status-sec p {
+  font-size: 15px;
+  color: var(--grey);
+  padding-left: 5px;
+}
+
+.card-status-icon {
+  display: flex;
+  align-items: center;
+  color: #120d02;
+  background-color: #d4dbec;
+  margin: 0px 5px;
+  padding: 8px;
+  border-radius: 104px;
+}
+
+/* complain statistics section  */
+.stat-container {
+  border-radius: 22px;
+  padding: 40px;
+  background-color: var(--body-background);
+}
+
+.stat-card {
+  background-color: var(--body-background);
+  border: none;
+  display: flex;
+  align-items: center;
+}
+.stat-card:hover {
+  background-color: var(--body-background);
+}
+.stat-card span {
+  background-color: var(--white);
+  color: var(--background-color);
+  padding: 15px;
+  font-size: 45px;
+  border-radius: 50%;
+}
+.stat-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stat-card-body p {
+  text-align: center;
+}
+
+/* login page css  */
+.login-page-container {
+  margin-top: 50px;
+}
+.login-form-colu {
+  background-color: var(--body-background);
+}
+
+.login-form-div {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.login-heading {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 5px;
+}
+
+.information-colu {
+  background-color: #f2f5fe;
+}
+.form-head {
+  margin-bottom: 20px;
+}
+.form-head p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+.login-form-label {
+  font-size: 16px;
+  font-weight: 400;
+}
+.form-control {
+  height: 40px;
+  margin-bottom: 20px;
+}
+.form-control:hover {
+  border: 1px solid var(--black);
+}
+.form-control:focus {
+  border: 1px solid var(--black);
+  box-shadow: none;
+}
+.login-page-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.forget-pass {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--background-color);
+  margin-bottom: 24px;
+}
+.link span {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.register-btn {
+  background-color: #3f5ead;
+  color: white;
+  margin: 0px;
+}
+.information-div {
+  padding: 40px;
+}
+.information-heading {
+  font-size: 18px;
+  font-weight: 500;
+  color: red;
+  margin-bottom: 16px;
+}
+.info-list {
+  list-style-type: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  margin: 1rem 0;
+  padding: 0 10px;
+  overflow-y: scroll;
+  max-height: 390px;
+}
+
+/* register page css  */
+.register-form-div {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.register-form-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.register-heading {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 5px;
+  padding: 0px;
+}
+.form-select {
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.form-select:hover {
+  border: 1px solid var(--black);
+}
+.form-select:focus {
+  border: 1px solid var(--black);
+  box-shadow: none;
+}
+
+.register-info-list {
+  max-height: none;
+}
+.bck-to-login {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--background-color);
+}
+
+/* register complain page css */
+
+.complain-info-para-div {
+  text-align: center;
+  padding: 30px;
+  background-color: #d9e3ff;
+  color: #000000;
+  margin-bottom: 35px;
+  border-radius: 5px;
+}
+.complain-info-para-div p {
+  font-size: 15px;
+}
+
+.complain-as-heading h4 {
+  margin-bottom: 18px;
+}
+.complain-info-row {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.register-colu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register-as-btn-div a {
+  text-decoration: none;
+}
+.register-as-btn {
+  background-color: var(--primary-color);
+  padding: 10px 20px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 40px;
+}
+
+.anonymous-btn {
+  background-color: var(--body-background);
+  padding: 10px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  color: var(--black);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* anonymous complain form css  */
+.anonymous-page-container {
+  margin-top: 90px;
+  margin-bottom: 50px;
+}
+.anonymous-row {
+  margin: 0px 100px;
+}
+.anonymous-form-head {
+  width: 100%;
+  margin: 0px 0px 20px 0px;
+}
+.complain-details-form-head {
+  width: 100%;
+  margin: 35px 0px 20px 0px;
+  padding: 0px;
+}
+.anonymous-form {
+  background-color: #f8faff;
+  border: 1px solid #d2d2d2;
+  padding: 20px;
+}
+.anonymous-form:hover {
+  background-color: none;
+}
+.form-div {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+}
+.complain-details-form-div {
+  margin-top: 16px;
+}
+.anonymous-form-label {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.form-feild-heading {
+  font-size: 14px;
+}
+.file-upload-field {
+  height: max-content;
+}
+.complain-submit-btn {
+  width: 22%;
+  margin: 20px 0px;
+  font-size: 16px;
+}
+.submit-btn-div {
+  display: flex;
+  justify-content: right;
+}
+
+/* super admin user list table page  */
+#user-list_paginate {
+  padding-top: 20px;
+}
+.dataTables_info {
+  padding-top: 28px !important;
+}
+.user-page-heading-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white);
+  padding: 18px;
+  border-radius: 8px;
+}
+.user-page-heading-container a {
+  text-decoration: none;
+}
+.breadcrumb {
+  margin: 0px;
+  align-items: baseline;
+}
+.breadcrumb-item a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+.active_breadcrumb {
+  font-size: 16px;
+}
+.page-heading-section {
+  padding: 30px 72px;
+}
+.page-heading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  width: 80%;
+  height: 200px;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-image: url("./62801.jpg");
+}
+
+.page-heading {
+  color: var(--white);
+  font-size: 32px;
+  font-weight: 600;
+}
+.search-box {
+  position: absolute;
+  top: 47.5%;
+  width: 32%;
+}
+.search-icon {
+  position: absolute;
+  right: 12%;
+  bottom: 32px;
+}
+
+.user-view-table th {
+  border: 1px solid var(--border-color) !important;
+  border-right: none !important;
+  background-color: #e9f0f6;
+  font-size: 18px;
+}
+.user-view-table td {
+  border: 1px solid var(--border-color) !important;
+  border-right: none !important;
+  border-top: none !important;
+}
+.user-view-table tbody tr:hover {
+  background-color: #e9edf5;
+}
+
+.action-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn-view {
+  margin-right: 10px;
+  width: 18%;
+}
+
+.action-btn-view a {
+  text-decoration: none;
+  background-color: #e7f0f7;
+  border: transparent;
+  border-radius: 5px;
+  color: #58667e;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+.action-btn-view:hover a {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+.action-btn-edit {
+  margin-right: 10px;
+  width: 18%;
+}
+.action-btn-edit a {
+  text-decoration: none;
+  background-color: #e7f0f7;
+  border: transparent;
+  border-radius: 5px;
+  color: #58667e;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+
+.action-btn-edit:hover a {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+.action-btn-delete {
+  margin-right: 10px;
+  width: 18%;
+}
+.action-btn-delete a {
+  text-decoration: none;
+  background-color: #f9dcdc;
+  border: transparent;
+  border-radius: 5px;
+  color: red;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+.action-btn-delete:hover a {
+  background-color: red;
+  color: var(--white);
+}
+
+/* complain-list page of super-admin  */
+
+.dataTables_wrapper {
+  background-color: var(--white);
+  padding: 50px;
+  border-radius: 14px;
+}
+
+.dataTables_length {
+  padding: 0px 0px 20px 0px;
+}
+
+.status-div-processing {
+  display: flex;
+  align-items: center;
+  background-color: #e6f2fc;
+  justify-content: center;
+  height: 40px;
+  border-radius: 50px;
+}
+.status-div-processing p {
+  margin: 0px;
+  color: #4994ec;
+  font-size: 15px;
+}
+.status-div-processing:hover {
+  background-color: #4286de;
+}
+.status-div-processing:hover p {
+  color: var(--white);
+}
+/* pending status  */
+
+.status-div-pending {
+  display: flex;
+  align-items: center;
+  background-color: #fef8e3;
+  justify-content: center;
+  height: 40px;
+  border-radius: 50px;
+}
+.status-div-pending p {
+  margin: 0px;
+  color: #f6c344;
+  font-size: 15px;
+}
+.status-div-pending:hover {
+  background-color: #f6c344;
+}
+.status-div-pending:hover p {
+  color: var(--white);
+}
+/* rejected status  */
+
+.status-div-rejected {
+  display: flex;
+  align-items: center;
+  background-color: #f4dada;
+  justify-content: center;
+  height: 40px;
+  border-radius: 50px;
+}
+.status-div-rejected p {
+  margin: 0px;
+  color: #b63831;
+  font-size: 15px;
+}
+.status-div-rejected:hover {
+  background-color: #b63831;
+}
+.status-div-rejected:hover p {
+  color: var(--white);
+}
+
+/* Complete Status */
+.status-div-completed {
+  display: flex;
+  align-items: center;
+  background-color: #e3f5e6;
+  justify-content: center;
+  height: 40px;
+  border-radius: 50px;
+}
+.status-div-completed p {
+  margin: 0px;
+  color: #5ac561;
+  font-size: 15px;
+}
+.status-div-completed:hover {
+  background-color: #5ac561;
+}
+
+.status-div-completed:hover p {
+  color: var(--white);
+}
+
+.action-btn-print {
+  margin-right: 10px;
+  width: 18%;
+}
+.action-btn-print a {
+  text-decoration: none;
+  background-color: #e7f0f7;
+  border: transparent;
+  border-radius: 5px;
+  color: #58667e;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+.action-btn-print:hover a {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.action-btn-forward {
+  margin-right: 10px;
+  width: 18%;
+}
+.action-btn-forward a {
+  text-decoration: none;
+  background-color: #e7f0f7;
+  border: transparent;
+  border-radius: 5px;
+  color: #58667e;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+.action-btn-forward:hover a {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+.action-btn-response {
+  margin-right: 10px;
+  width: 18%;
+}
+.action-btn-response a {
+  text-decoration: none;
+  background-color: #e7f0f7;
+  border: transparent;
+  border-radius: 5px;
+  color: #58667e;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+.action-btn-response:hover a {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* profile page css  */
+.profile-section {
+  margin-top: 30px;
+}
+
+.user-icon {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2460b9;
+  color: #dbdbdb;
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 69px;
+  margin-right: 20px;
+}
+.user-info {
+  margin-bottom: 8px !important;
+}
+.profile-container {
+  background: #dcdfe7;
+  border-radius: 12px;
+  padding: 38px;
+}
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+.user-profile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user-profile-details h2 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+}
+.edit-info-btn-div {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  width: 38%;
+}
+.edit-info-btn {
+  display: flex;
+  background: #2460b9;
+  border: none;
+  height: 50px;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  justify-content: center;
+  border-radius: 8px;
+}
+.edit-info-btn .edit-profile-btn {
+  display: flex;
+  gap: 10px;
+  text-decoration: none;
+  background: #2460b9;
+  border: none;
+  color: var(--white);
+}
+.edit-info-btn .chng-pass-btn {
+  display: flex;
+  gap: 10px;
+  text-decoration: none;
+  background: #2460b9;
+  border: none;
+  color: var(--white);
+}
+/* user details page css of super admin  */
+.user-detail-heading-section {
+  padding: 30px 60px;
+}
+
+.detail-page-container {
+  background-color: var(--white);
+  padding: 55px 60px;
+  border-radius: 8px;
+}
+
+.assigned-to {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.user-detail-heading h3 {
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(24, 24, 24);
+  color: var(--primary-color);
+}
+.details-row {
+  margin: 20px 0px;
+}
+.complain-desc {
+  width: 80%;
+}
+.details-div p {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.details-div h5 {
+  color: var(--grey);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* create user form page of super admin  */
+
+.create-user-section {
+  margin: 40px 0px;
+}
+.create-user-row {
+  margin: 0px 100px;
+}
+.btn-colu {
+  margin: 20px 0px;
+  width: 15%;
+}
+.create-btn {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* complain-detials page css  */
+
+.complain-btn-div {
+  display: flex;
+  justify-content: end;
+  margin-right: 60px;
+}
+.complain-btns {
+  width: 10%;
+  margin: 20px 10px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+/* complain  view page's response modal css and page css */
+.text-area {
+  height: 100px;
+}
+.detial-heading {
+  margin-top: 55px;
+}
+
+.response-modal-footer {
+  justify-content: space-between;
+}
+
+.complain-response-btns {
+  font-size: 17px;
+  font-weight: 500;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.complain-print-btns {
+  background-color: var(--border-color);
+  border-color: var(--grey);
+  color: var(--black);
+}
+.complain-print-btns:hover {
+  background-color: var(--grey);
+  border-color: var(--border-color);
+}
+
+.complain-img-div {
+  width: 25%;
+}
+.complain-img-div img {
+  width: 100%;
+}
+.response-log-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(24, 24, 24);
+}
+.response-log-heading h3 {
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 20px;
+  color: var(--primary-color);
+}
+.select-file-form {
+  margin-top: 30px;
+  margin-bottom: 0px !important;
+  display: flex;
+  gap: 30px;
+}
+.select-file-form label {
+  font-size: 17px;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+.reply-btn-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.file-choose {
+  height: 100%;
+}
+/* chat log section css  */
+
+.chat-page-container {
+  background-color: var(--white);
+  padding: 55px 60px 40px 60px;
+  border-radius: 8px;
+  margin-top: 45px;
+}
+
+.sender-response-colu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.img-div {
+  width: 8%;
+}
+.img-div img {
+  width: 100%;
+}
+
+.receiver-response-colu {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 20px;
+}
+
+.reply-form {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.reply-label {
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+.text_area_reply {
+  border: 1px solid var(--primary-color);
+  margin: 0px;
+  height: 80px;
+}
+/* category and sub category list of super admin  */
+
+.table tr {
+  text-align: center;
+}
+
+/* change password page  */
+.Change-password-page-container {
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+
+/* create complain form page css  */
+.create-complain-page-container {
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+
+/* General user dashboard  */
+/* complain list page  */
+.action-btn-view-user {
+  margin-right: 10px;
+  width: 35%;
+}
+.action-btn-view-user a {
+  text-decoration: none;
+  background-color: #e7f0f7;
+  border: transparent;
+  border-radius: 5px;
+  color: #58667e;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+.action-btn-view-user:hover a {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.action-btn-print-user {
+  margin-right: 10px;
+  width: 35%;
+}
+.action-btn-print-user a {
+  text-decoration: none;
+  background-color: #e7f0f7;
+  border: transparent;
+  border-radius: 5px;
+  color: #58667e;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+.action-btn-print-user:hover a {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* create category page css  */
+.create-category-page-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.category-create-btn-div {
+  display: flex;
+}
+.create-btns {
+  width: 20%;
+  margin: 20px 10px;
+  font-size: 17px;
+  font-weight: 500;
+  background-color: var(--primary-color);
+}
+/* complain view page of general user  */
+
+.response-container {
+  background-color: var(--white);
+  padding: 55px 60px 40px 60px;
+  border-radius: 8px;
+  margin-top: 45px;
+}
+
+/* edit details page  */
+.edit-page-btn-div {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-right: 60px;
+}
+
+/* mobile view responsive  */
+
+@media only screen and (max-width: 600px) {
+  .toggle_btn {
+    display: block;
+  }
+}

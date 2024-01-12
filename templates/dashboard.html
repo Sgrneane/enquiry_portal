@@ -1,0 +1,186 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+       <div class="col-md-9 my-profile-w-85">
+        <section id="tab-content-container">
+          <div class="p-0">
+              <div class="row">
+                  <div class="main-section-title">
+                      <a href="" class="section-title">Complains in Number</a>
+                  </div>
+                  <hr class="main-section-hr">
+
+                  <div class="tab-content mt-4" id="myTabContent">
+                          <div class="row row-cols-1 row-cols-md-5 g-4 count-card">
+                            <div class="col">
+                              <div class="card mb-3 h-100">
+                                <div class="card-body">
+                                  <h5 class="card-title">Food and Beverages <br><small class="text-secondary mt-1">( खाद्य तथा पेय पदार्थ )</small></h5>
+                                  <h2 class="card-text text-primary">214</h2>
+                                </div>
+                              </div>
+                            </div>  
+                            <div class="col">
+                              <div class="card mb-3 h-100">
+                                <div class="card-body">
+                                  <h5 class="card-title">Hotel and Restaurants<br><small class="text-secondary mt-1">( होटेल तथा रेस्टुरेन्ट )</small></h5>
+                                  <h2 class="card-text text-primary">214</h2>
+                                </div>
+                              </div>
+                            </div>  
+                            <div class="col">
+                              <div class="card mb-3 h-100">
+                                <div class="card-body">
+                                  <h5 class="card-title">Feed Related <br><small class="text-secondary mt-1">( दाना सम्बन्धि )</small></h5>
+                                  <h2 class="card-text text-primary">214</h2>
+                                </div>
+                              </div>
+                            </div>  
+                            <div class="col">
+                              <div class="card mb-3 h-100">
+                                <div class="card-body">
+                                  <h5 class="card-title">Service Based <br><small class="text-secondary mt-1">( सेवा प्रवाह सम्बन्धि )</small></h5>
+                                  <h2 class="card-text text-primary">214</h2>
+                                </div>
+                              </div>
+                            </div>  
+                            <div class="col">
+                              <div class="card mb-3 h-100">
+                                <div class="card-body">
+                                  <h5 class="card-title">Others <br><small class="text-secondary mt-1">( अन्य )</small> </h5>
+                                  <h2 class="card-text text-primary">214</h2>
+                                </div>
+                              </div>
+                            </div>  
+                          </div>
+                  </div>
+              </div>
+          </div>
+        </section>
+        <section id="tab-content-container" class="mt-4">
+            <div class="row p-0 m-0">
+                <div class="col-md-6 ">
+                    <div class="InvestmentChart kit-card-db chart-bg">
+                        <h5>Complain in accordance to category</h5>
+                        <div class="row d-flex" style="justify-content: space-between;">
+                            <div class="col-md-5 chart-info-list">
+                                <ul class="chart-list">
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #01b7f9;"></i>Food and Beverages</span> <span class="badge text-bg">{{ a }}</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #ff8110;"></i>Hotel and Restaurants</span><span class="badge text-bg">50</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #5281ce;"></i>Feed</span><span class="badge text-bg">40</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #9ef5ff;"></i>Service Based</span><span class="badge text-bg">10</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #998ceb;"></i>Others</span> <span class="badge text-bg">8</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-7" style="display: flex; justify-content: center; align-items: center;">
+                                <canvas id="categoryChart" style="width: 200px!important; height: 200px!important;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="InvestmentChart kit-card-db chart-bg">
+                        <h5>Complain in accordance to Status</h5>
+                        <div class="row d-flex" style="justify-content: space-between;">
+                            <div class="col-md-5 chart-info-list">
+                                <ul class="chart-list">
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #00c853;"></i>Responded</span><span class="badge text-bg">50</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #ffc107;"></i>Processing</span><span class="badge text-bg">10</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #673ab7;"></i>Pending</span><span class="badge text-bg">40</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #c62828;"></i>Rejected</span> <span class="badge text-bg">8</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-7" style="display: flex; justify-content: center; align-items: center;">
+                                <canvas id="statusChart" style="width: 200px!important; height: 200px!important;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      var xValues = ["Food and Beverages", "Hotel and Restaurants", "Feed", "Service Based", "Others"];
+      var yValues = [{{ a }}, 50, 40, 10, 8];
+      var barColors = [
+        "#01b7f9",
+        "#ff8110",
+        "#5281ce",
+        "#9ef5ff",
+        "#998ceb"
+      ];
+    
+      new Chart("categoryChart", {
+        type: "pie",
+        data: {
+        //   labels: xValues,
+          datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+          }]
+        },
+        options: {
+          legend: {
+            labels: {
+              fontFamily: "Poppins, sans-serif"
+            }
+          },
+          title: {
+            display: false,
+            text: "Investment",
+            fontFamily: "Poppins, sans-serif"
+          },
+          tooltips: {
+            titleFontFamily: "Poppins, sans-serif",
+            bodyFontFamily: "Poppins, sans-serif"
+          }
+        }
+      });
+    </script>
+
+<script>
+    var xValues = ["Responded", "Pending", "Processing", "Rejected"];
+    var yValues = [20, 50, 40, 10];
+    var barColors = [
+      "#00c853",
+      "#673ab7",
+      "#ffc107",
+      "#c62828"
+    ];
+  
+    new Chart("statusChart", {
+      type: "pie",
+      data: {
+      //   labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {
+          labels: {
+            fontFamily: "Poppins, sans-serif"
+          }
+        },
+        title: {
+          display: false,
+          text: "Investment",
+          fontFamily: "Poppins, sans-serif"
+        },
+        tooltips: {
+          titleFontFamily: "Poppins, sans-serif",
+          bodyFontFamily: "Poppins, sans-serif"
+        }
+      }
+    });
+  </script>
+  {% endblock %}
+
+

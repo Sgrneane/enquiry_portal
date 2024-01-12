@@ -1,0 +1,17 @@
+<br>
+<div class="complain-detail-container mt-4">
+    <div class="complain-details-title">Response Details</div>
+        <div class="row mt-4">
+            {% for response in complain.response.all %}
+            <div class="col-md-12">
+                <p class="label">Response Description</p>
+                <p class="data">{{ response.response_description }}</p><br>
+                {% if response.response_image %}
+                <a href="{{ response.response_image.url }}" data-fancybox data-caption="Single image">
+                    <img src="{{ response.response_image.url }}" width="20%"/>
+                </a>
+                {% endif %}
+            </div>
+            {%endfor %}
+        </div>
+</div>

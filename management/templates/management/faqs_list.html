@@ -1,0 +1,124 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-md-9 my-profile-w-85">
+  <div class="main-section-title">
+    <a href="" class="section-title">FAQS</a>
+    <ul class="nav nav-tabs" id="pradesh-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a href="{% url 'management:create_faq' %}" style="color:white">
+            <button class="nav-link active" id="broadCategory-tab" data-bs-toggle="tab" data-bs-target="#broadCategorys"
+                type="button" role="tab" aria-controls="broadCategorys" aria-selected="true">Add FAQ</button></a>
+        </li> 
+    </ul>
+</div>
+  <div class="mt-0" style="min-height: calc(100vh - 271px);">
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button  " type="button" data-bs-toggle="collapse" data-bs-target="#c1"
+            aria-expanded="true" aria-controls="c1">
+            विभागको LIMS प्रणालीमा कसरी रजिष्टर गर्न सकिन्छ? </button>
+        </h2>
+        <div id="c1" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>&nbsp;</p>
+            <p>पहिलो पटक http://lims.dftqc.gov.np/register&nbsp; लिंक राखि खुल्ने वेवपेजमा आफ्नो विवरण भर्नुहोस् ।
+              त्यसपछी विभागबाट तपाईंको विवरण verify गरेपछी तपाईले उक्त प्रणाली प्रयोग गर्न सक्नु हुनेछ । रजिष्टर भएपछि
+              तपाईंले http://lims.dftqc.gov.np लिंक राखि खुल्ने वेवपेजमा आफ्नो प्रयोगकर्ता नाम र पासवर्ड राखि लगईन गर्नु
+              होस् र उक्त प्रणाली प्रयोग गर्नुहोस् ।</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2"
+            aria-expanded="true" aria-controls="c2">
+            खाद्य उद्योग दर्ताको लागी सिफारिस लिन के कस्ता कागजात आवश्यक पर्दछन ? साथै राजस्व कति लाग्दछ ? </button>
+        </h2>
+        <div id="c2" class="accordion-collapse collapse " aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <ul>
+              <li>रु.१०(दश) को हुलाक टिकट टाँस गरेको निवेदन,</li>
+              <li>उद्योग दर्ता गर्ने&nbsp; कार्यालयले पठाएको पत्र,</li>
+              <li>खाद्य उद्योग स्थापना गर्न चाहाने व्यक्तिको नागरिकताको प्रतिलिपि, र</li>
+              <li>खाद्य उद्योगमा उत्पादन गर्न अपनाइने प्राविधिक योजना पेश गर्नुपर्छ; र सो योजनामा तोकिएको खाद्य बस्तु
+                उत्पादन गर्न आवश्यक कच्चा पदार्थको स्रोत र किसिम, मेसिनरीहरुको विवरण, सरसफाइको व्यवस्था, उत्पादन बिधि,
+                प्राविधिक जनशक्तिको व्यवस्था तथा गुण नियन्त्रणको लागी आवश्यक अन्य कुराहरु खुलाएको हुनुपर्नेछ ।</li>
+              <li>उद्योग सिफारिको राजस्व रु २००&nbsp; लाग्छ ।</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c3"
+            aria-expanded="true" aria-controls="c3">
+            खाद्य वस्तुको लेवलमा हुनु पर्ने विवरणहरु के के हुन? </button>
+        </h2>
+        <div id="c3" class="accordion-collapse collapse " aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <h4>प्याक गरिएका खाद्य वस्तुको बाहिरी आवरण/प्याकेटमा&nbsp; विवरण हुनुपर्दछ।</h4>
+            <ul>
+              <li>खाद्य वस्तुको नाम</li>
+              <li>समिश्रण (मिसाइएको वस्तुहरु) को विवरण मात्रा सहित</li>
+              <li>उद्योगको पूरा नाम र ठेगाना</li>
+              <li>उद्योगको रजिस्ट्रेसन नम्बर</li>
+              <li>उत्पादन मिति</li>
+              <li>उपभोग्य मिति</li>
+              <li>&nbsp;ब्याच नम्बर</li>
+              <li>रंग र परिरक्षी प्रयोग गरेको भए अनिवार्य खुलाउनुपर्ने</li>
+              <li>उपभोग विधि आवश्यक भए</li>
+              <li>भण्डारण विधि आवश्यक भए</li>
+              <li>अनुज्ञापत्र नम्बर</li>
+            </ul>
+            <p>&nbsp;</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="accordion-item">
+        {% for faq in faqs %}
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c4"
+            aria-expanded="true" aria-controls="c4">
+            {{ faq.question }} </button>
+        </h2>
+        <div id="c4" class="accordion-collapse collapse " aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>{{ faq.answer }}</p>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid public-nav mt-3">
+    <div class="container h-100">
+      <nav class="navbar navbar-expand-lg h-100" style="box-shadow: none;">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown" style="height: 60px;">
+            <ul class="navbar-nav h-100" style="width: 100%!important; justify-content: center; align-items: center;">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="https://dftqc.gov.np/">© २०२२ खाद्य प्रविधि र गुण
+                  नियन्त्रण विभाग</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+{% endblock %}

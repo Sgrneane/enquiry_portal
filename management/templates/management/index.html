@@ -1,0 +1,313 @@
+{% load static %}
+{% include 'header.html' %}
+
+<div class="container mt-4">
+
+  {% if messages %}
+{% for message in messages %}
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+   {{ message|safe }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+    <div class="row">
+      <div class="col-md-8">
+        <div id="tab-content-container">
+          <div class="p-0">
+            <div class="row">
+              <div class="main-section-title">
+                <a href="" class="section-title">सोधपुछ पोर्टल सम्बन्धि जानकारी</a>
+              </div>
+              <hr class="main-section-hr">
+              <div class="tab-content mt-3" id="myTabContent">
+                <div class="row">
+                  <p class="label">
+                    कृषि वस्तुको स्वच्छता सम्बन्धी सम्झौताको पारदर्शिता प्रावधान अन्तर्गत नेपालमा एस.पि.एस नेशनल
+                    ईन्क्वायरी प्वाईन्ट स्थापना सन् २००४ जनवरी १ मा कृषि विकास मन्त्रालय अन्तर्गतको खाद्य प्रविधी तथा
+                    गुण नियन्त्रण विभागमा भएको हो । एस.पि.एस सम्बन्धी प्रावधानहरुका बारेमा नेशनल ईन्क्वायरी प्वाईन्टले
+                    जानकारी उपलब्ध गराउने क्रममा तपसिलका कार्यहरु गर्दछ । <br>
+                    -एस.पि.एस संग सम्बन्धित राष्ट्रिय तथा अन्तराष्ट्रिय निकायहरु संग समन्वय गरी एस.पि.एस सम्बन्धी
+                    प्रावधान बारे सूचना एवं जानकारीहरुको अभिलेख राखी आवश्यता अनुसार आदान प्रदान गर्ने । <br>
+                    -विश्‍व व्यापार संगठनका सदस्यहरु एवं अन्य सेवाग्राहीहरुलाई आवश्यकता पर्ने जानकारीहरु इन्क्वायरी
+                    प्वाईन्टमा भएमा तुरुन्तै उपलब्ध गराउने तथा नभएमा सम्बन्धित निकायसँग समन्वय गरी जानकारी उपलब्ध गराउने
+                    । <br>
+                    -एस.पि.एस मेजर्स सम्बन्धी सूचना सन्देश प्रबाह गर्ने सिलसिलामा आवश्यक कार्यहरु गर्ने । <br>
+                    -एस.पि.एस मेजर्स संग सम्बन्धि जानकारीहरु छिटो छरितो एवं सहज रुपमा प्रबाह गर्न सकभर विद्युतिय सञ्‍चार
+                    माध्यम (ईन्टरनेट, फोन फ्याक्स आदि) को प्रयोग गरी उपलब्ध गराउने ।
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 g-2 mt-3 count-container">
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body public-count-card">
+                <div class="public-count-text">
+                  <h5 class="label">Total Enquiry</h5>
+                  <span class="data">{{ total_counts }}</span>
+                </div>
+                <div class="icon-box">
+                  <span class="material-symbols-outlined">
+                    feedback
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body public-count-card">
+                <div class="public-count-text">
+                  <h5 class="label">Plant Health</h5>
+                  <span class="data">{{ plant_health_count }}</span>
+                </div>
+                <div class="icon-box">
+                  <span class="material-symbols-outlined">
+                    brunch_dining
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body public-count-card">
+                <div class="public-count-text">
+                  <h5 class="label">Animal Health</h5>
+                  <span class="data">{{ animal_health_count }}</span>
+                </div>
+                <div class="icon-box">
+                  <span class="material-symbols-outlined">
+                    home_work
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body public-count-card">
+                <div class="public-count-text">
+                  <h5 class="label">Food Safety</h5>
+                  <span class="data">{{ food_safety_count }}</span>
+                </div>
+                <div class="icon-box">
+                  <span class="material-symbols-outlined">
+                    stream
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body public-count-card">
+                <div class="public-count-text">
+                  <h5 class="label">Others Complains</h5>
+                  <span class="data">{{others_count }}</span>
+                </div>
+                <div class="icon-box">
+                  <span class="material-symbols-outlined">
+                    dynamic_feed
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-content-container" class="mt-3">
+          <div class="row p-0">
+            <div class="main-section-title">
+              <a href="" class="section-title">सम्बन्धित लिंकहरु</a>
+            </div>
+            <hr class="main-section-hr">
+            <div class="row row-cols-1 row-cols-md-4 g-2 mt-2 count-container">
+              <div class="col">
+                <div class="card h-100">
+                  <a href="https://dftqc.gov.np/" target="_blank" class="link-box-container h-100">
+                    <div class="card-body link-box text-center h-100">
+                      <div class="icon-box">
+                        <img src="{% static 'images/nepal-government.png' %}" alt="">
+                      </div>
+                      <div class="public-count-text mt-3">
+                        <h5 class="label">Department of Food Technology and Quality Control</h5>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card h-100">
+                  <a href="https://spsenquiry.gov.np/" target="_blank" class="link-box-container h-100">
+                    <div class="card-body link-box text-center h-100">
+                      <div class="icon-box">
+                        <img src="{% static 'images/nepal-government.png' %}" alt="">
+                      </div>
+                      <div class="public-count-text mt-3">
+                        <h5 class="label">SPS National Enquiry Point</h5>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card h-100">
+                  <a href="http://lims.dftqc.gov.np" target="_blank" class="link-box-container h-100">
+                    <div class="card-body link-box text-center h-100">
+                      <div class="icon-box">
+                        <img src="{% static 'images/nepal-government.png' %}" alt="">
+                      </div>
+                      <div class="public-count-text mt-3">
+                        <h5 class="label">Laboratory Information Management System</h5>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card h-100">
+                  <a href="https://dietary.dftqc.gov.np" target="_blank" class="link-box-container h-100">
+                    <div class="card-body link-box text-center h-100">
+                      <div class="icon-box">
+                        <img src="{% static 'images/nepal-government.png' %}" alt="">
+                      </div>
+                      <div class="public-count-text mt-3">
+                        <h5 class="label">Dietary Food Supplement Registration System</h5>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="sidebar-sticky-top">
+          <div id="tab-content-container" class="register-search">
+            <a href="" class="btn btn-primary w-100 border-0 text-start" data-bs-toggle="modal"
+              data-bs-target="#searchBox">
+              <div class="icon-box me-3">
+                <span class="material-symbols-outlined">quick_reference_all</span>
+              </div>
+              <span>
+                <strong>Search Enquiry</strong> <br>( सोधपुछ खोजी गर्नुहोस )</span>
+            </a>
+            <a href="" class="btn btn-primary w-100 border-0 text-start mb-0">
+              <div class="icon-box me-3">
+                <span class="material-symbols-outlined">live_help</span>
+              </div>
+              <span>
+                <strong>Enquiry Related Information</strong> <br>( सोधपुछ सम्बन्धि जानकारी )</span>
+            </a>
+          </div>
+          <div id="tab-content-container" class="mt-4">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61552001069889&tabs=timeline&width=376&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+              width="376" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-7">
+        <div id="tab-content-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.7709622767725!2d85.32333357626966!3d27.693472976190595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19bad1d4f423%3A0x6c0cb3c34e76945b!2sDepartment%20of%20Food%20Technology%20%26%20Quality%20Control!5e0!3m2!1sen!2snp!4v1702878486792!5m2!1sen!2snp" width="100%" height="350" style="border:1px solid #0f52b6;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div id="tab-content-container">
+          <div class="p-0">
+            <div class="row">
+              <div class="main-section-title">
+                <a href="" class="section-title">सम्पर्क तथा ठेगाना</a>
+              </div>
+              <hr class="main-section-hr">
+              <div class="tab-content mt-3" id="myTabContent">
+                <div class="row">
+                  <p class="mb-1">
+                    <span class="label">कार्यालयको नाम : </span> 
+                    <span class="data">खाद्य प्रविधि तथा गुण नियन्त्रण विभाग</span>
+                  </p><br>
+                  <p class="mb-1">
+                    <span class="label">कार्यालयको ठेगाना : </span> 
+                    <span class="data">बबरमहल, काठमाडौँ, नेपाल</span>
+                  </p><br>
+                  <p class="mb-1">
+                    <span class="label">कार्यालयको फोन : </span> 
+                    <span class="data">+९७७-१-४२६२३६९, ४२६२४३०</span>
+                  </p><br>
+                  <p class="mb-1">
+                    <span class="label">कार्यालयको फ्याक्स : </span> 
+                    <span class="data">+९७७-१-४२६२३३७</span>
+                  </p><br>
+                  <p class="mb-1">
+                    <span class="label">कार्यालयको इमेल : </span> 
+                    <span class="data">info@dftqc.gov.np</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid public-nav mt-3">
+    <div class="container h-100">
+      <nav class="navbar navbar-expand-lg h-100" style="box-shadow: none;">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown" style="height: 60px;">
+            <ul class="navbar-nav h-100"
+              style="width: 100%!important; justify-content: center; align-items: center;">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="https://dftqc.gov.np/">© २०२२ खाद्य प्रविधि र गुण नियन्त्रण विभाग</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
+<div class="modal fade" id="searchBox" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="searchBoxLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered confirmation-modal">
+    <div class="modal-content">
+    <form method="post" action="{% url 'management:search_complain' %}">
+      {% csrf_token %}
+      <div class="modal-body delete-body text-start p-5">
+        <label for="" class="form-label mb-1 data cm">Enquiry Token Number( टोकन नं. )</label>
+        <input type="text" class="form-control cm" placeholder="Eg. DFTQC-CX-XXXX" name="search">
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <div class="row d-flex">
+          <div class="col-md-12 d-flex justify-content-center">
+            <button type="button" class="btn btn-primary cancel" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary ms-3">Search</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-md-9 my-profile-w-85">
+                <section id="tab-content-container">
+                    <div class="p-0">
+                        <div class="row">
+                            <div class="main-section-title">
+                                <a href="" class="section-title">{{ request.user.first_name }} {{ request.user.last_name }} > <span style="color: #7a7a7a; font-size: 18px;"><small>My Profile</small></span></a>
+                            </div>
+                            <hr class="main-section-hr">
+
+                            <div class="tab-content mt-4" id="myTabContent">
+                                    <div class="row userprofile-das m-0 mb-4">
+                                        <div class="col-md-6 userprofile-das-left">
+                                            <div class="me-3 userprofile-das-div"> <img src="https://ui-avatars.com/api/?name={{ request.user.first_name.0 }}+{{ request.user.last_name.0 }}&amp;rounded=true&amp;background=FB802C&amp;color=ffffff&amp;size=28&amp;bold=true" alt=""></div>
+                                
+                                            <div class="userprofile-text">
+                                                <h3 class=" text-capitalize username"> {{ request.user.first_name }} {{ request.user.last_name }}</h3>
+                                                <p class="username-sm"> Role : <span>{{ request.user.role_name }}</span> </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 userprofile-das-right">
+                                            <a href="{% url 'account:change_password' %}" class="btn btn-primary">Change Password</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">Full Name( पुरा नाम )</label>
+                                            <p class="text-capitalize data">{{ request.user.first_name }} {{ request.user.last_name }}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">Username( प्रयोगकर्ता नाम  )</label>
+                                            <p class="data">{{ request.user.username }}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">Role( रोल )</label>
+                                            <p class="data">{{ request.user.role_name }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">Phone Number( फोन नम्बर )</label>
+                                            <p class="data">+977-{{ request.user.phone_number }}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">Email Address( इमेल ठेगाना )</label>
+                                            <p class="data">{{ request.user.email }}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label mb-1 label cm">
+                                                {% if request.user.role == 3 %}Joined Date
+                                            {% else %}
+                                            Created Date
+                                        {% endif %}</label>
+                                            <p class="data">{{ request.user.created_date }}</p>
+                                        </div>
+                                    </div>
+                            </div>
+
+                        </div>
+
+
+                        
+                    </div>
+                </section>
+
+
+            </div>
+   {% endblock %}

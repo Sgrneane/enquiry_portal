@@ -1,0 +1,56 @@
+
+                                <div class="complain-detail-container mt-4">
+                                    <div class="complain-details-title">Communication Log</div>
+                                    {% for communication in complain.complain_communication.all %}
+                                    {% if request.user != communication.communication_creator %}
+                                        <div class="row">
+                                            <div class="row flex-row mt-2 w-50 ">
+                                                <div class="response-profile-image">
+                                                    <img src="https://ui-avatars.com/api/?name={{ communication.communication_creator.first_name.0 }}+{{ communication.communication_creator.last_name.0 }}&amp;rounded=true&amp;background=FB802C&amp;color=ffffff&amp;size=50&amp;bold=true" alt="">
+                                                </div>
+                                                <p class="response-message">
+                                                    {{ communication.message }}
+                                                {% if communication.image %}
+                                                 <a href="{{ communication.image.url }}" data-fancybox data-caption="Single image">
+                                                    <img src="{{ communication.image.url }}" width="10%"/>
+                                                </a>
+                                            </p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        {% else %}
+
+                                        <div class="row justify-content-end">
+                                            <div class="row mt-2 w-50 flex-row-reverse">
+                                                <div class="response-profile-image">
+                                                    <img src="https://ui-avatars.com/api/?name={{ communication.communication_creator.first_name.0 }}+{{ communication.communication_creator.last_name.0 }}&amp;rounded=true&amp;background=FB802C&amp;color=ffffff&amp;size=50&amp;bold=true" alt="">
+                                                </div>
+                                                <p class="response-message">
+                                                   {{ communication.message }}
+                                                   {% if communication.image %}
+                                                    <a href="{{ communication.image.url }}" data-fancybox data-caption="Single image">
+                                                        <img src="{{ communication.image.url }}" width="10%"/> 
+                                                    </a>
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                         {% if not complain.response.exists %}
+                                        <form action="{%url 'management:create_communication' id=complain.id %}" method="post" enctype="multipart/form-data" style="background: #f4f5f6; padding: 14px; border-radius: 6px;">
+                                            {% csrf_token %}
+                                            <label for="" class="form-label cm data">Reply Message</label>
+                                            <textarea type="text" class="form-control cm" placeholder="Enter response message"
+                                                            name="communication_message" rows="3" required></textarea>
+
+                                        <label for="" class="form-label cm mb-0 data mt-2">Attachment (if any)</label>
+                                        <input type="file" class="form-control cm" placeholder="Enter payment voucher number" name="communication_image">
+                                        <div class="col-md-12 text-end mt-2">
+                                            <button type="submit" class="btn btn-primary">Reply</button>
+                                        </div>
+                                        </form>
+                                        {%endif %}
+
+                                </div>
+

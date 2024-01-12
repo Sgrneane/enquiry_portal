@@ -1,0 +1,67 @@
+{% extends 'logout.html' %}
+{% load static %}
+{% block content %}
+    <main>
+      <section class="create-user-section">
+        <div class="container">
+          <div class="row create-user-row">
+            <div class="col-md-12 login-form-colu">
+              <div class="form-div complain-details-form-div">
+                <div class="anonymous-form-head">
+                  <h3 class="register-heading">Create Admin</h3>
+                </div>
+                <form method="post" class="card anonymous-form" role="form">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col form-group">
+                      <label for="firstname" class="form-label anonymous-form-label">First Name(नाम)*</label>
+                      <input type="text" class="form-control" id="firstname" placeholder=" Enter your First name" aria-label="First name" name="first_name" value="{{ user.first_name }}"/>
+                    </div>
+                    <div class="col form-group">
+                      <label for="lastname" class="form-label anonymous-form-label">Last Name(थर)*</label>
+                      <input type="text" class="form-control" id="lastname" placeholder="Enter your Last name" aria-label="Last name" name="last_name" value="{{ user.last_name }}" />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col form-group">
+                      <label for="username" class="form-label anonymous-form-label">Username*</label>
+                      <input type="text" class="form-control" id="firstname" placeholder=" Enter your First name" aria-label="First name"  name="username" value="{{ user.username }}"/>
+                    </div>
+                    <div class="col form-group">
+                      <label for="exampleInputPassword" class="form-label login-form-label">Password (पासवर्ड)*</label>
+                      <input type="password" class="form-control" id="exampleInputPassword" name="password" placeholder="Enter your Password" />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col form-group">
+                      <label for="exampleInputEmail1" class="form-label login-form-label">Email Address *</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter your Email/Username/Phone number"  value="{{user.email}}"/>
+                    </div>
+                    <div class="col form-group">
+                      <label for="exampleInputPhoneNumber" class="form-label anonymous-form-label">Phone Number (फोन नम्बर)*</label>
+                      <input type="text" class="form-control" id="exampleInputPhoneNumber" name="phone_number" placeholder="Enter your Phone Number" value="{{ user.phone_number }}"/>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col form-group">
+                      <label for="exampleInputRole" class="form-label anonymous-form-label">Role *</label>
+                      <select class="form-select" aria-label="Default select example" id="exampleInputRole" name="role">
+                        <option value="2">Admin</option>
+                        <option value="3">Super Admin</option>
+                        <option value="4">Complain Reviewer</option>
+                      </select>
+                    </div>
+                  </div>
+                <div class="btn-colu">
+                  <div class="create-btn-div">
+                    <button type="submit" class="btn w-100 btn-primary">Update User</button>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    {% endblock %}

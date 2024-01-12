@@ -1,0 +1,114 @@
+{% extends 'footer.html' %}
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+            <div class="container mt-4">
+                <section id="tab-content-container">
+                    <div class="p-0">
+                        <div class="row">
+                            <div class="main-section-title">
+                                <a href="" class="section-title">Categories</a>
+                                <ul class="nav nav-tabs" id="pradesh-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="Category-tab" data-bs-toggle="tab" data-bs-target="#Categorys"
+                                            type="button" role="tab" aria-controls="Categorys" aria-selected="false">Category</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="subCategory-tab" data-bs-toggle="tab" data-bs-target="#subCategorys"
+                                            type="button" role="tab" aria-controls="subCategorys" aria-selected="false">Sub-category</button>
+                                    </li>    
+                                </ul>
+                            </div>
+                            <hr class="main-section-hr">
+
+                            <div class="tab-content mt-4" id="myTabContent">
+                                <div class="tab-pane show active" id="Categorys" role="tabpanel" aria-labelledby="Category-tab"
+                                    tabindex="0">
+
+                                    <table id="Category" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>S. No.</th>
+                                                <th>Category Name English</th>
+                                                <th>Category Name Nepali</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for category in categories %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ category.english_name }}</td>
+                                                <td>{{ category.nepali_name }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="tab-pane fade" id="subCategorys" role="tabpanel" aria-labelledby="subCategory-tab"
+                                    tabindex="0">
+                                    <table id="subCategory" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>S. No.</th>
+                                                <th>Category Name English</th>
+                                                <th>Category Name Nepali</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for sub_category in sub_categories%}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ sub_category.english_name }}</td>
+                                                <td>{{ sub_category.nepali_name }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block scripts %}
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script>
+        $('#broadCategory').dataTable( {
+            dom: 'fBrtpl',
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, 'All']
+            ],
+        });
+        $('#Category').dataTable( {
+            dom: 'fBrtpl',
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, 'All']
+            ],
+        });
+        $('#subCategory').dataTable( {
+            dom: 'fBrtpl',
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, 'All']
+            ],
+        });
+        $('#respondedComplain').dataTable( {
+            dom: 'fBrtpl',
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, 'All']
+            ],
+        });
+    </script>
+ {% endblock %}

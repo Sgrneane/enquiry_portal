@@ -1,0 +1,255 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+            <div class="col-md-9 my-profile-w-85">
+                <section id="tab-content-container">
+                    <div class="p-0">
+                        <div class="row">
+                            <div class="main-section-title">
+                                <a href="{% url 'management:all_complains' %}" class="section-title">Complains > <span style="color: #7a7a7a; font-size: 18px;"><small>{{ complain.complain_title }} > View</small></span></a>
+                            </div>
+                            <hr class="main-section-hr">
+
+                            <div class="tab-content mt-4" id="myTabContent">
+                                <div class="complain-detail-container">
+                                    <div class="complain-details-title">User Details</div>
+                                    {% if complain.created_by %}
+                                    <div class="row mt-2">
+                                        <div class="col-md-3">
+                                            <p class="label">Enquiry by</p>
+                                            <p class="data">{{ complain.created_by.first_name }} {{ complain.created_by.last_name }}</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="label">Username</p>
+                                            <p class="data">{{ complain.created_by.username }}</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="label">Contact No.</p>
+                                            <p class="data">{{ complain.created_by.phone_number }}</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="label">Email Address</p>
+                                            <p class="data">{{ complain.created_by.email }}</p>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="row mt-2">
+                                        <div class="col-md-3">
+                                            <p class="label">Enquiry by</p>
+                                            <p class="data">{{ complain.is_anonymous.first_name }} {{ complain.is_anonymous.last_name }}</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="label">Address</p>
+                                            <p class="data">{{ complain.is_anonymous.address }}</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="label">Contact No.</p>
+                                            <p class="data">{{ complain.is_anonymous.phone_number }}</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="label">User Type</p>
+                                            <p class="data">Anonymous</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                </div>
+
+                                <div class="complain-detail-container mt-4">
+                                    <div class="complain-details-title">Enquiry Details</div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-3">
+                                                <p class="label">Ticket No.</p>
+                                                <p class="data">{{ complain.ticket_no }}</p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p class="label">Enquiry Type</p>
+                                                {% if complain.created_by %}
+                                                <p class="data">Registered</p>
+                                                {% else %}
+                                                <p class="data">Anonymous</p>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p class="label">Enquiry Category</p> 
+                                                <p class="data">{{ complain.complain_category }}</p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p class="label">Enquiry Purpose</p>
+                                                <p class="data">{{ complain.get_purpose }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-6">
+                                                <p class="label">Complain Title</p>
+                                                <p class="data">{{ complain.complain_title }}</p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p class="label">Complaint Address</p>
+                                                <p class="data">{{ complain.address }}</p>
+                                            </div>
+                                            <div class="col-md-3">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-12">
+                                                <p class="label">Complain Description</p>
+                                                <p class="data">{{ complain.complain_description }}</p><br>
+                                                {% if complain.complain_image %}
+                                                <a href="{{ complain.complain_image.url }}" data-fancybox data-caption="{{ complain.complain_title }}">
+                                                    <img src="{{ complain.complain_image.url }}" width="20%"/>
+                                                </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                </div>
+                                {% if request.user.role == 1 or request.user.role == 2 %}
+                                {% if complain.complain_communication.exists %}
+                                {% with complain_id=complain_id %}
+                                {% include 'management/communication.html' %}
+                                {% endwith %}
+                                {% endif %}
+                                {% endif %}
+                                {% if complain.response.exists %}
+                                {% with complain_id=complain_id %}
+                                {% include 'management/response.html' %}
+                                {% endwith %}
+                                {% endif %}
+                                 {% if request.user.role == 1 %}
+                                <div class="row mt-3">
+                                    <div class="col-md-12 text-end">
+                                        <button type="button" class="btn btn-primary"><a style="color:white;" href='https://pdfmachine.kantipurinfotech.com.np/public/api/gunaso/{{ complain.id }}'>Print</a></button>
+                                        {% if not complain.response.exists and request.user.role == 1  %}
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#response">Response</button>
+                                                {% endif %}
+                                        {% if not complain.assigned_to.exists  and not complain.response.exists %}  
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#forward">Forward</button>
+                                                {% endif %}                                       
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                <div class="modal fade" id="response" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                    aria-labelledby="responseLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered approval-modal">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="responseLabel">Response Message</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{% url 'management:response' id=complain.id %}" method="post" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-12">
+                                                        <label for="" class="form-label cm">Response Message</label>
+                                                        <textarea type="text" class="form-control cm" placeholder="Enter response message"
+                                                            name="response_message" rows="4" name='response_message'></textarea>
+                                                    </div>
+                                                </div>
+                                                {% if not complain.complain_sub_category  %}
+                                                <div class="mb-3 col-md-12">
+                                                    <label for="" class="form-label cm">Complain Sub Category</label>
+                                                    <select id="" class="category form-select kit-form-control" name="complain_category">
+                                                        <option value="" disabled selected>Select Complain Sub Category</option>
+                                                        {% for cc in complain_sub_categories %}
+                                                            <option value="{{ cc.id }}">{{ cc.english_name }}</option>
+                                                          {% endfor %}
+                                                    </select> 
+                                                </div>
+                                                {% endif %}
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-12">
+                                                        <label for="" class="form-label cm">Attachment (if any)</label>
+                                                        <input type="file" class="form-control cm"
+                                                            placeholder="Enter payment voucher number" name="response_image">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-danger" name="reject"></button>
+                                                <button type="submit" class="btn btn-primary" name="response">Response</button>
+                                            </div>
+
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="forward" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                    aria-labelledby="forwardLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered approval-modal">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="forwardLabel">Forward Message</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{% url 'management:view_complain' id=complain.id %}" method="post" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-6">
+                                                            <label for="" class="form-label cm">Forward to:</label>
+                                                            {% for cr in complain_reviewers %}
+                                                              <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="{{ cr.id }}" id="flexCheckDefault" name="assigned_to">
+                                                                <label class="form-check-label label" for="flexCheckDefault">
+                                                                    {{ cr.first_name }} {{ cr.last_name }}({{ cr.address }})
+                                                                </label>
+                                                              </div>
+                                                           {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% if not complain.complain_sub_category %}
+                                                    <div class="mb-3 col-md-12">
+                                                        <label for="" class="form-label cm">Complain  Sub Category</label>
+                                                        <select id="category" class="category form-select kit-form-control" name="complain_category">
+                                                            <option value="" disabled selected>Select Complain  Sub Category</option>
+                                                            {% for cc in complain_sub_categories %}
+                                                                <option value="{{ cc.id }}">{{ cc.english_name }}</option>
+                                                              {% endfor %}
+                                                        </select> 
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+        
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-12">
+                                                        <label for="" class="form-label cm">Forward Message</label>
+                                                        <textarea type="text" class="form-control cm" placeholder="Enter response message"
+                                                            name="admin_message" rows="4"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-12">
+                                                        <label for="" class="form-label cm">Attachment (if any)</label>
+                                                        <input type="file" class="form-control cm"
+                                                            placeholder="Enter payment voucher number" name="communication_image">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary" name='forward_button'>Forward</button>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                        
+                    </div>
+                </section>
+            </div>
+            {% endblock %}
+        
