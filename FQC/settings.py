@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'social_django',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
     'django_celery_results',
 ]
 
