@@ -49,14 +49,17 @@
   <div class="container-fluid public-nav sticky-top">
     <div class="container h-100">
       <nav class="navbar navbar-expand-lg h-100" style="box-shadow: none;">
-        <div class="container-fluid">
+        <div class="container-fluid public-nav-mbl">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
+          <a class="nav-link register-btn mbl-display" href="{% url 'account:login'%}">Enquiry </a>
+
           <div class="collapse navbar-collapse" id="navbarNavDropdown" style="height: 60px;">
             <ul class="navbar-nav h-100"
-              style="width: 50%!important; justify-content: space-between; align-items: center;">
+              style="width: 50%; justify-content: space-between; align-items: center;">
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="{% url 'management:index' %}">Home</a>
               </li>

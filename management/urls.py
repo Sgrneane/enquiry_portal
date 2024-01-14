@@ -22,7 +22,6 @@ urlpatterns = [
     path('response/<int:id>',views.response, name="response"),
     path('management/complaint/<int:complain_id>', api.ComplainDetails.as_view(), name='complaint_details'),
     path('search',views.search_complain,name='search_complain'),
-    path('send-mail', views.send_mail_celery, name="send_mail"),
     path('create-FAQ', views.create_faq, name="create_faq"),
     path('faqs-list', views.all_faqs, name="all_faqs"),
     path('index-faqs', views.index_faq, name="index_faq"),

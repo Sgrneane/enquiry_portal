@@ -464,8 +464,8 @@ button.btn.btn-primary {
 }
 
 button.btn.btn-primary:hover {
-  background-color: #0d68f9;
-  border-color: #0d68f9;
+  background-color: #017c09;
+  border-color: #017c09;
 }
 
 button.btn.btn-danger {
@@ -696,6 +696,9 @@ ul.chart-list li{
   justify-content: space-between;
   align-items: center;
 }
+.count-card .card-body h2{
+  color:#017c09 !important;
+}
 .public-count-text h5{
   font-size: 16px;
   font-family: poppins;
@@ -821,4 +824,58 @@ ul.chart-list li{
 }
 .accordion-item:first-of-type .accordion-button{
   border-radius: 0!important;
+}
+.register-search a:active{
+  background:#006c07!important;
+}
+
+.navbar-toggler{
+   border: none;
+    outline: none; 
+  } 
+.navbar-toggler:focus{ 
+  outline: none; 
+  box-shadow: none;
+ } 
+ .navbar-toggler-icon{
+  filter:brightness(0) invert(1)!important;
+ }
+
+@media only screen and (max-width: 600px) {
+  .db-user-profile{
+    display: none;
+  }
+  .navbar .container{
+    justify-content: center!important;
+  }
+  .public-nav, .public-nav .container{
+    padding: 0!important;
+  }
+  .navbar-brand{
+    margin: 0;
+  }
+  .navbar-brand p{
+    font-size: 12px!important;
+  }
+  .dftqc, .navbar-brand span{
+    font-size: 14px!important;
+  }
+  .public-nav-mbl{
+    background: #006c07;
+    padding: 0!important;
+  }
+  .public-nav-mbl .navbar-nav{
+    width: 100%!important;
+    align-items: flex-start!important;
+    padding: 20px;
+  }
+  .public-nav-mbl .navbar-nav li{
+    margin: 0!important;
+  }
+  .login-container{
+    height: auto!important;
+  }
+  .login-container .tab-content{
+    padding: 14px!important;
+  }
 }

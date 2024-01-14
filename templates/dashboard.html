@@ -6,7 +6,7 @@
           <div class="p-0">
               <div class="row">
                   <div class="main-section-title">
-                      <a href="" class="section-title">Complains in Number</a>
+                      <a href="" class="section-title">Enquiries in Number</a>
                   </div>
                   <hr class="main-section-hr">
 
@@ -15,40 +15,32 @@
                             <div class="col">
                               <div class="card mb-3 h-100">
                                 <div class="card-body">
-                                  <h5 class="card-title">Food and Beverages <br><small class="text-secondary mt-1">( खाद्य तथा पेय पदार्थ )</small></h5>
-                                  <h2 class="card-text text-primary">214</h2>
+                                  <h5 class="card-title">Plant Health <br><small class="text-secondary mt-1">( बनस्पति स्वाथ्य  )</small></h5>
+                                  <h2 class="card-text text-primary">{{ plant_health_count }}</h2>
                                 </div>
                               </div>
                             </div>  
                             <div class="col">
                               <div class="card mb-3 h-100">
                                 <div class="card-body">
-                                  <h5 class="card-title">Hotel and Restaurants<br><small class="text-secondary mt-1">( होटेल तथा रेस्टुरेन्ट )</small></h5>
-                                  <h2 class="card-text text-primary">214</h2>
+                                  <h5 class="card-title">Animal Health<br><small class="text-secondary mt-1">( पशु  स्वाथ्य )</small></h5>
+                                  <h2 class="card-text text-primary">{{ animal_health_count }}</h2>
                                 </div>
                               </div>
                             </div>  
                             <div class="col">
                               <div class="card mb-3 h-100">
                                 <div class="card-body">
-                                  <h5 class="card-title">Feed Related <br><small class="text-secondary mt-1">( दाना सम्बन्धि )</small></h5>
-                                  <h2 class="card-text text-primary">214</h2>
+                                  <h5 class="card-title">Food Safety <br><small class="text-secondary mt-1">( खाद्य सुरक्षा )</small></h5>
+                                  <h2 class="card-text text-primary">{{ food_safety_count}}</h2>
                                 </div>
                               </div>
-                            </div>  
-                            <div class="col">
-                              <div class="card mb-3 h-100">
-                                <div class="card-body">
-                                  <h5 class="card-title">Service Based <br><small class="text-secondary mt-1">( सेवा प्रवाह सम्बन्धि )</small></h5>
-                                  <h2 class="card-text text-primary">214</h2>
-                                </div>
-                              </div>
-                            </div>  
+                            </div>    
                             <div class="col">
                               <div class="card mb-3 h-100">
                                 <div class="card-body">
                                   <h5 class="card-title">Others <br><small class="text-secondary mt-1">( अन्य )</small> </h5>
-                                  <h2 class="card-text text-primary">214</h2>
+                                  <h2 class="card-text text-primary">{{ others_count }}</h2>
                                 </div>
                               </div>
                             </div>  
@@ -65,11 +57,11 @@
                         <div class="row d-flex" style="justify-content: space-between;">
                             <div class="col-md-5 chart-info-list">
                                 <ul class="chart-list">
-                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #01b7f9;"></i>Food and Beverages</span> <span class="badge text-bg">{{ a }}</span></li>
-                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #ff8110;"></i>Hotel and Restaurants</span><span class="badge text-bg">50</span></li>
-                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #5281ce;"></i>Feed</span><span class="badge text-bg">40</span></li>
-                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #9ef5ff;"></i>Service Based</span><span class="badge text-bg">10</span></li>
-                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #998ceb;"></i>Others</span> <span class="badge text-bg">8</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #01b7f9;"></i>Plant Health</span> <span class="badge text-bg">{{ plant_health_count }}</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #ff8110;"></i>Animal Health</span><span class="badge text-bg">{{ animal_health_count}}</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #5281ce;"></i>Food Safety</span><span class="badge text-bg">{{ food_safety_count}}</span></li>
+              
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #998ceb;"></i>Others</span> <span class="badge text-bg">{{ others_count}}</span></li>
                                 </ul>
                             </div>
                             <div class="col-md-7" style="display: flex; justify-content: center; align-items: center;">
@@ -85,10 +77,10 @@
                         <div class="row d-flex" style="justify-content: space-between;">
                             <div class="col-md-5 chart-info-list">
                                 <ul class="chart-list">
-                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #00c853;"></i>Responded</span><span class="badge text-bg">50</span></li>
-                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #ffc107;"></i>Processing</span><span class="badge text-bg">10</span></li>
-                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #673ab7;"></i>Pending</span><span class="badge text-bg">40</span></li>
-                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #c62828;"></i>Rejected</span> <span class="badge text-bg">8</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #00c853;"></i>Responded</span><span class="badge text-bg">{{ responded_complains_count }}</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #ffc107;"></i>Processing</span><span class="badge text-bg">{{ processing_complains_count }}</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #673ab7;"></i>Pending</span><span class="badge text-bg">{{ pending_complains_count }}</span></li>
+                                    <li><span><i class="fa-solid fa-circle me-2" style="color: #c62828;"></i>Rejected</span> <span class="badge text-bg">{{ rejected_complains_count }}</span></li>
                                 </ul>
                             </div>
                             <div class="col-md-7" style="display: flex; justify-content: center; align-items: center;">
@@ -106,14 +98,13 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-      var xValues = ["Food and Beverages", "Hotel and Restaurants", "Feed", "Service Based", "Others"];
-      var yValues = [{{ a }}, 50, 40, 10, 8];
+      var xValues = ["Plant Health", "Animal Health ", "Food Safety", "Others"];
+      var yValues = [{{ plant_health_count }}, {{ animal_health_count }}, {{ food_safety_count }}, {{ others_count}}];
       var barColors = [
         "#01b7f9",
         "#ff8110",
         "#5281ce",
-        "#9ef5ff",
-        "#998ceb"
+        "#9ef5ff"
       ];
     
       new Chart("categoryChart", {
@@ -146,7 +137,7 @@
 
 <script>
     var xValues = ["Responded", "Pending", "Processing", "Rejected"];
-    var yValues = [20, 50, 40, 10];
+    var yValues = [{{ responded_complains_count }}, {{ pending_complains_count }}, {{ processing_complains_count}}, {{rejected_complains_count}}];
     var barColors = [
       "#00c853",
       "#673ab7",

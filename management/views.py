@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponse,get_object_or_404,get_list_or_4
 from django.db.models import Count
 from django.contrib import messages
 from django.urls import reverse
+from django.db.models import Q
 from django.utils import timezone
 from django.http import JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
@@ -33,20 +34,40 @@ def index(request):
     return render(request,'management/index.html',context)
 
 def user_dashboard(request):
-    total_complains=Complain.objects.count()
-    food_and_beverage_count=Complain.objects.filter(complain_category__english_name='Plant Health').count()
-    hotel_and_restaurant_count=Complain.objects.filter(complain_category__english_name='Animal Health').count()
-    feed_count=Complain.objects.filter(complain_category__english_name='Food Safety').count()
-    others_count=Complain.objects.filter(complain_category__english_name='Others').count()
-    pending_complains_count=Complain.objects.filter(complain_status=1).count()
-    processing_complains_count=Complain.objects.filter(complain_status=2).count()
-    responded_complains_count=Complain.objects.filter(complain_status=3).count()
-    rejected_complains_count=Complain.objects.filter(complain_status=4).count()
+    user=request.user
+    if user.role==3:
+        total_complains=Complain.objects.filter(created_by=user).count()
+        plant_health_count=Complain.objects.filter(Q(complain_category__english_name='Plant Health') &
+                                                        Q(created_by=user)).count()
+        animal_health_count=Complain.objects.filter(Q(complain_category__english_name='Animal Health') &
+                                                           Q(created_by=user)).count()
+        food_safety_count=Complain.objects.filter(Q(complain_category__english_name='Food Safety') &
+                                           Q(created_by=user)).count()
+        others_count=Complain.objects.filter(Q(complain_category__english_name='Others') &
+                                             Q(created_by=user)).count()
+        pending_complains_count=Complain.objects.filter(Q(complain_status=1) &
+                                                        Q(created_by=user)).count()
+        processing_complains_count=Complain.objects.filter(Q(complain_status=2) &
+                                                           Q(created_by=user)).count()
+        responded_complains_count=Complain.objects.filter(Q(complain_status=3) &
+                                                          Q(created_by=user)).count()
+        rejected_complains_count=Complain.objects.filter(Q(complain_status=4) &
+                                                         Q(created_by=user)).count()
+    else:
+        total_complains=Complain.objects.count()
+        plant_health_count=Complain.objects.filter(complain_category__english_name='Plant Health').count()
+        animal_health_count=Complain.objects.filter(complain_category__english_name='Animal Health').count()
+        food_safety_count=Complain.objects.filter(complain_category__english_name='Food Safety').count()
+        others_count=Complain.objects.filter(complain_category__english_name='Others').count()
+        pending_complains_count=Complain.objects.filter(complain_status=1).count()
+        processing_complains_count=Complain.objects.filter(complain_status=2).count()
+        responded_complains_count=Complain.objects.filter(complain_status=3).count()
+        rejected_complains_count=Complain.objects.filter(complain_status=4).count()
     context={
         'total_complains':total_complains,
-        'food_and_beverage_count': food_and_beverage_count,
-        'hotel_and_restaurant_count':hotel_and_restaurant_count,
-        'feed_count':feed_count,
+        'plant_health_count': plant_health_count,
+        'animal_health_count':animal_health_count,
+        'food_safety_count':food_safety_count,
         'others_count':others_count,
         'pending_complains_count':pending_complains_count,
         'processing_complains_count':processing_complains_count,
@@ -160,7 +181,7 @@ def anonymous_complain(request):
     context={
             'complain_category': complain_category,
             'complain_purpose':complain_purpose,
-            }     
+            } 
     if request.method == 'POST':
         form=AnonymousForm(request.POST,request.FILES)
         if form.is_valid():
@@ -411,13 +432,3 @@ def create_faq(request):
     
     return render(request,'management/create_faq.html')
         
-def send_mail_celery(request):
-    mail = 'sagarpneupane@gmail.com'
-    context={
-        'context':'Sagar Neupane'
-    }
-    html_content = render_to_string('management/mail_template.html',context)
-    try:
-        send_notification_mail.delay(to_mail,html_content)
-    finally:
-        return HttpResponse('We have sent you a confirmation mail!')
