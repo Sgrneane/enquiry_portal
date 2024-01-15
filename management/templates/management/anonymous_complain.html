@@ -128,7 +128,7 @@
             <ul class="navbar-nav h-100"
               style="width: 100%!important; justify-content: center; align-items: center;">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="https://dftqc.gov.np/">© २०२२ खाद्य प्रविधि र गुण नियन्त्रण विभाग</a>
+                <a class="nav-link" aria-current="page" href="https://dftqc.gov.np/">© २०२४ खाद्य प्रविधि तथा गुण नियन्त्रण विभाग</a>
               </li>
             </ul>
           </div>
@@ -138,42 +138,4 @@
   </div>
   {% endblock %}
 
-  {% block scripts %}
-  <script>
-            $(document).ready(function () {
-                $('#province').on('change', function () {
-                  var provinceId = $(this).val();
-                  $.ajax({
-                      url: `nepalmap/get-districts/${provinceId}/`,
-                      type: 'GET',
-                      success: function (data) {
-                          var districtSelect = $('#district');
-                          districtSelect.empty();
-                          districtSelect.prepend('<option value="" disabled selected>Select District</option>');
-                          $.each(data, function (index, district) {
-                              districtSelect.append('<option value="' + district.id + '">' + district.name + '</option>');
-                          });
-                      }
-                  });
-                })
-                $('#district').on('change', function () {
-                  var districtId = $(this).val();
-                  $.ajax({
-                      url: `nepalmap/get-district/get-municipalities/${districtId}/`,
-                      type: 'GET',
-                      success: function (data) {
-                          var municipalitySelect = $('#municipality');
-                          municipalitySelect.empty();
-                          municipalitySelect.prepend('<option value="" disabled selected>Select Municipality</option>');
-                          $.each(data, function (index, municipality) {
-                              municipalitySelect.append('<option value="' + municipality.id + '">' + municipality.name + '</option>');
-                          });
-                      }
-                  });
-                })
-            })
-        </script>
-        
-  {% endblock %}
-
-
+ 
